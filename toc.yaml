@@ -1,0 +1,107 @@
+toc:
+  properties:
+    subcollection: messages-for-rabbitmq-gen2
+    service-name: messages-for-rabbitmq-gen2
+    category: database
+    audience: service
+    href: /docs/messages-for-rabbitmq-gen2
+    console-page: /catalog/services/messages-for-rabbitmq-gen2
+    product-page: https://www.ibm.com/products/messages-for-rabbitmq
+    path: messages-for-rabbitmq-gen2
+    label: Messages for RabbitMQ Gen 2
+  entries:
+  - navgroup:
+      id: learn
+      topics:
+      - link:
+          label: IBM Cloud Databases
+          href: https://cloud.ibm.com/docs/cloud-databases
+      - link:
+          label: What is RabbitMQ?
+          href: https://www.ibm.com/products/messages-for-rabbitmq
+      - topic: getting-started.md
+        navtitle: Getting started
+      - include: ../cloud-databases-gen2/overview.md
+      - include: ../cloud-databases-gen2/isolated-compute.md
+      - learn-dashboard-overview.md
+      - learn-performance.md
+      - learn-pricing.md
+      - learn-security-compliance.md
+      - release-notes.md
+      - link:
+          label: Gen 1 docs
+          href: https://cloud.ibm.com/docs/messages-for-rabbitmq
+  - navgroup:
+      id: howto
+      topics:
+      - howto-provisioning.md
+      - howto-user-management.md
+      - migrating_classic_quorum.md
+      - include: ../cloud-databases-gen2/ha-dr.md
+      - howto-getting-connection-strings.md
+      - topicgroup:
+          label: Connecting to Messages for RabbitMQ
+          topics:
+          - connecting-external.md
+          - connecting-ibmcloud-app.md
+          - connecting-cli-client.md
+      - topicgroup:
+          label: Managing resources
+          topics:
+          - howto-resources-scaling.md
+      - howto-plugins.md
+      - howto-upgrading.md
+      - howto-shovel.md
+      - howto-streams.md
+      - topicgroup:
+          label: Managing backups
+          topics:
+          - learn-rabbitmq-backups.md
+          - include: ../cloud-databases-gen2/howto-manage-backups.md
+          - include: ../cloud-databases-gen2/backup-restore.md
+      - topicgroup:
+          label: Observability
+          topics:
+          - include: ../cloud-databases-gen2/cdb-logging-monitoring.md
+          - include: ../cloud-databases-gen2/logging.md
+          - include: ../cloud-databases-gen2/reference-monitoring.md
+          - include: ../cloud-databases-gen2/at-events.md
+      - topicgroup:
+          label: Enhancing security
+          topics:
+          - include: ../cloud-databases-gen2/manage-scc.md
+          - include: ../cloud-databases-gen2/howto-cbr.md
+          - include: ../cloud-databases-gen2/cbr-tutorial.md
+          - include: ../cloud-databases-gen2/howto-allowlists.md
+          - include: ../cloud-databases-gen2/reference-service-endpoints.md
+          - include: ../cloud-databases-gen2/howto-vpes.md
+          - include: ../cloud-databases-gen2/reference-iam.md
+          - include: ../cloud-databases-gen2/reference-key-protect.md
+          - include: ../cloud-databases-gen2/reference-hpcs.md
+          - include: ../cloud-databases-gen2/howto-deprovisioning.md
+  - navgroup:
+      id: reference
+      topics:
+      - include: ../cloud-databases-gen2/cli.md
+      - include: ../cloud-databases-gen2/api.md
+      - include: ../cloud-databases-gen2/db-version-policy.md
+      - include: ../cloud-databases-gen2/reference-responsibilities.md
+      - topic: ha-dr.md
+        navtitle: Understanding high availability and disaster recovery
+      - topic: data-portability.md
+        navtitle: Data portability
+  - navgroup:
+      id: help
+      topics:
+      - topicgroup:
+          label: Troubleshooting
+          topics:
+          - ts-connect.md
+          - ts-defs.md
+          - include: ../cloud-databases-gen2/ts-terraform.md
+      - topicgroup:
+          label: FAQs
+          topics:
+          - include: ../cloud-databases-gen2/faq.md
+          - include: ../cloud-databases-gen2/resource-config-faq.md
+          - include: ../cloud-databases-gen2/availability-zones-faq.md

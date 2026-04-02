@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "title": "IBM Cloud® Messages for RabbitMQ Gen 2",
+  "introduction": "RabbitMQ Gen 2 is an open source multi-protocol messaging broker on IBM's VPC-based platform with isolated compute and private endpoints.",
+  "product_page": "https://www.ibm.com/products/messages-for-rabbitmq",
+  "console_page": "/databases/messages-for-rabbitmq-gen2/create",
+  "section_topics": {
+    "links": [
+      {
+        "title": "Getting started with Messages for RabbitMQ Gen 2",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-getting-started"
+      },
+      {
+        "title": "Gen 2 Overview: Isolated Compute",
+        "href": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute"
+      },
+      {
+        "title": "Understanding Gen 1 and Gen 2",
+        "href": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-overview-gen1-gen2"
+      },
+      {
+        "title": "Provisioning",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-provisioning"
+      },
+      {
+        "title": "Pricing",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-pricing"
+      },
+      {
+        "title": "Gen 1 Documentation",
+        "href": "/docs/messages-for-rabbitmq"
+      }
+    ]
+  },
+  "section_highlights": [
+    {
+      "title": "IBM named a leader for cloud database management systems",
+      "description": "Gartner named IBM a leader in Gartner Magic Quadrant for 2021 Cloud Database Management Systems.",
+      "href": "https://www.ibm.com/blog/ibm-is-named-a-leader-in-the-2021-gartner-magic-quadrant-for-cloud-database-management-systems-dbms/",
+      "type": "blog"
+    },
+    {
+      "title": "IBM Training - Cloud",
+      "description": "Includes Power Virtual Server, SAP, VMware, Advocate, Architect, Developer, and Site Reliability Engineer, and more",
+      "href": "https://www.ibm.com/training/cloud",
+      "type": "training"
+    }
+  ],
+  "section_devtools": {
+    "api": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-api",
+    "cli": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-cli",
+    "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
+  },
+  "section_updates": {
+    "view_more": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes",
+    "tiles": [
+      {
+        "date": "02 April 2026",
+        "title": "Messages for RabbitMQ Gen 2 launched"
+      },
+      {
+        "date": "02 April 2026",
+        "title": "Gen 2 platform: Isolated compute and private endpoints"
+      },
+      {
+        "date": "02 April 2026",
+        "title": "VPC-based networking for enhanced security"
+      }
+    ]
+  }
+}
