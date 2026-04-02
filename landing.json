@@ -47,7 +47,6 @@
     }
   ],
   "section_devtools": {
-    "api": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-api",
     "cli": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-cli",
     "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
   },
