@@ -3,7 +3,7 @@
   "title": "IBM Cloud® Messages for RabbitMQ Gen 2",
   "introduction": "RabbitMQ Gen 2 is an open source multi-protocol messaging broker on IBM's VPC-based platform with isolated compute and private endpoints.",
   "product_page": "https://www.ibm.com/products/messages-for-rabbitmq",
-  "console_page": "/databases/messages-for-rabbitmq-gen2/create",
+  "console_page": "/databases/messages-for-rabbitmq/create",
   "section_topics": {
     "links": [
       {
