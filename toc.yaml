@@ -36,7 +36,6 @@ toc:
       topics:
       - howto-provisioning.md
       - howto-user-management.md
-      - migrating_classic_quorum.md
       - include: ../cloud-databases-gen2/ha-dr.md
       - howto-getting-connection-strings.md
       - topicgroup:
@@ -52,7 +51,6 @@ toc:
       - howto-plugins.md
       - howto-upgrading.md
       - howto-shovel.md
-      - howto-streams.md
       - topicgroup:
           label: Managing backups
           topics:

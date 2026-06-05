@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026,
+lastupdated: "2026-06-05"
 
 keywords: rabbitmq, rabbitmq users
 
@@ -14,19 +14,18 @@ subcollection: messages-for-rabbitmq-gen2
 # Managing users and permissions
 {: #user-management}
 
-
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/access-control.html#permissions). 
+{{site.data.keyword.messages-for-rabbitmq_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/access-control.html#permissions).
 
 When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given an `admin` user to access and manage RabbitMQ. You can also add users in the _Service Credentials_ panel, which allows for access to RabbitMQ to be integrated with your {{site.data.keyword.cloud_notm}} account and [IAM](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-iam with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
-Since {{site.data.keyword.messages-for-rabbitmq-gen2}} comes with the RabbitMQ Management plug-in enabled, user access is also controlled by [user tags](https://www.rabbitmq.com/management.html#permissions){: external}. These tags control what information is available to users through the management UI, `rabbitmqadmin`, and the RabbitMQ HTTP API.
+Since {{site.data.keyword.messages-for-rabbitmq}} comes with the RabbitMQ Management plug-in enabled, user access is also controlled by [user tags](https://www.rabbitmq.com/management.html#permissions){: external}. These tags control what information is available to users through the management UI, `rabbitmqadmin`, and the RabbitMQ HTTP API.
 
 ## The `admin` user
 {: #admin-user}
 
-Every RabbitMQ deployment comes with an `admin` user. This `admin` user had full administrative privileges on your RabbitMQ deployment. The primary difference between the admin user and any other users you add to your deployment is the ability to provision new vhosts and manage all other users' permissions and access. `admin` is the only user that is initially granted access to all the settings and configuration that is found in the _Admin_ tab in the management UI. 
+Every RabbitMQ deployment comes with an `admin` user. This `admin` user had full administrative privileges on your RabbitMQ deployment. The primary difference between the admin user and any other users you add to your deployment is the ability to provision new vhosts and manage all other users' permissions and access. `admin` is the only user that is initially granted access to all the settings and configuration that is found in the _Admin_ tab in the management UI.
 
 Before you log in with the admin user, set the password.
 
@@ -58,7 +57,7 @@ The Foundation Endpoint that is shown on the Overview panel Deployment Details s
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
 -H `Authorization: Bearer <>` \
--H `Content-Type: application/json` \ 
+-H `Content-Type: application/json` \
 -d `{"password":"newrootpasswordsupersecure21"}` \
 ```
 {: pre}
@@ -66,9 +65,9 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ## _Service credential_ users
 {: #service-cred-user}
 
-Users that you [create through the _Service Credentials_ panel](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings) are given full permissions to configure, write, and read on the default Virtual Host.  
+Users that you [create through the _Service Credentials_ panel](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings) are given full permissions to configure, write, and read on the default Virtual Host.
 
-They are also automatically tagged with the "monitoring" tag, allowing users to access the management plug-in and see all connections, channels, and node-related information. These users given a limited view of the _Admin_ tab and the functions that are found there. 
+They are also automatically tagged with the "monitoring" tag, allowing users to access the management plug-in and see all connections, channels, and node-related information. These users given a limited view of the _Admin_ tab and the functions that are found there.
 
 If you need users that are created from _Service Credentials_ to have more privileges, you can log in with the admin user and grant them.
 

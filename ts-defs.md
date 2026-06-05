@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026,
+lastupdated: "2026-06-05"
 
 keywords: troubleshooting Messages for RabbitMQ, connectivity, definitions, error importing definitions
 
@@ -14,21 +14,20 @@ content-type: troubleshoot
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Why can't I import definitions between {{site.data.keyword.messages-for-rabbitmq-gen2}} versions?
+# Why can't I import definitions between {{site.data.keyword.messages-for-rabbitmq}} versions?
 {: #troubleshoot-defs}
-
-[Gen 2]{: tag-purple}
-
 {: troubleshoot}
 {: support}
 
-If you encounter errors while importing definitions between {{site.data.keyword.messages-for-rabbitmq-gen2}} versions, review these common causes and solutions.
+[Gen 2]{: tag-purple}
+
+If you encounter errors while importing definitions between {{site.data.keyword.messages-for-rabbitmq}} versions, review these common causes and solutions.
 {: shortdesc}
 
-You encounter errors while importing definitions between {{site.data.keyword.messages-for-rabbitmq-gen2}} versions.
+You encounter errors while importing definitions between {{site.data.keyword.messages-for-rabbitmq}} versions.
 {: tsSymptoms}
 
-[RabbitMQ definitions](https://www.rabbitmq.com/definitions.html){: external} are metadata that RabbitMQ stores about its cluster. This metadata includes information about users, vhosts, queues, exchanges, bindings, and runtime parameters. Definitions can be used to restore a cluster or migrate to a new cluster. An error while importing definitions can be because of invalid imported arguments being imported from {{site.data.keyword.messages-for-rabbitmq-gen2}} versions. Review the following information to troubleshoot and resolve common definition problems:
+[RabbitMQ definitions](https://www.rabbitmq.com/definitions.html){: external} are metadata that RabbitMQ stores about its cluster. This metadata includes information about users, vhosts, queues, exchanges, bindings, and runtime parameters. Definitions can be used to restore a cluster or migrate to a new cluster. An error while importing definitions can be because of invalid imported arguments being imported from {{site.data.keyword.messages-for-rabbitmq}} versions. Review the following information to troubleshoot and resolve common definition problems:
 {: tsResolve}
 
 Look into your [logs](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-logging) and search for this line:

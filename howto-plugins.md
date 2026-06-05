@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026,
+lastupdated: "2026-06-05"
 
 keywords: rabbitmq, databases, jms, shovel, delayed, stomp, mqtt, consistent hash exchange, rabbitmq plug-in
 
@@ -14,12 +14,11 @@ subcollection: messages-for-rabbitmq-gen2
 # Using RabbitMQ plug-ins
 {: #plug-ins}
 
-
 [Gen 2]{: tag-purple}
 
-RabbitMQ supports various plug-ins to extend its core functions. {{site.data.keyword.messages-for-rabbitmq-gen2_full}} comes with a selection of plug-ins that are already enabled on your deployment. Plug-in management is handled by the {{site.data.keyword.messages-for-rabbitmq-gen2}} service. Users cannot enable or disable plug-ins.
+RabbitMQ supports various plug-ins to extend its core functions. {{site.data.keyword.messages-for-rabbitmq_full}} comes with a selection of plug-ins that are already enabled on your deployment. Plug-in management is handled by the {{site.data.keyword.messages-for-rabbitmq}} service. Users cannot enable or disable plug-ins.
 
-## Available {{site.data.keyword.messages-for-rabbitmq-gen2}} plug-ins
+## Available {{site.data.keyword.messages-for-rabbitmq}} plug-ins
 {: #plug-ins-available}
 
 | Plug-in | Name  |
@@ -38,7 +37,7 @@ RabbitMQ supports various plug-ins to extend its core functions. {{site.data.key
 ## Shovel plug-in
 {: #shovel-plug-in}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} comes with the [Shovel plug-in](https://www.rabbitmq.com/shovel.html), `rabbitmq_shovel`, and the [Shovel Management plug-in](https://github.com/rabbitmq/rabbitmq-shovel-management), `rabbitmq_shovel_management`, enabled. You can configure the plug-in through both the [RabbitMQ Management plug-in UI](#rabbitmq-management-plug-in) and its accompanying API.
+{{site.data.keyword.messages-for-rabbitmq}} comes with the [Shovel plug-in](https://www.rabbitmq.com/shovel.html), `rabbitmq_shovel`, and the [Shovel Management plug-in](https://github.com/rabbitmq/rabbitmq-shovel-management), `rabbitmq_shovel_management`, enabled. You can configure the plug-in through both the [RabbitMQ Management plug-in UI](#rabbitmq-management-plug-in) and its accompanying API.
 
 The _Shovel Status_ and _Shovel Management_ links appear under the _Admin_ tab.
 
@@ -69,7 +68,7 @@ The RabbitMQ Management plug-in, `rabbitmq_management`, provides access to your 
 ## JMS plug-in
 {: #jms-plug-in}
 
-The RabbitMQ JMS Topic Exchange plug-in, `rabbitmq_jms_topic_exchange`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments. This plug-in adds server-side support for the [RabbitMQ JMS client](https://github.com/rabbitmq/rabbitmq-jms-client){: .external} and supports JMS topic routing plus selection based on JMS SQL selection rules.
+The RabbitMQ JMS Topic Exchange plug-in, `rabbitmq_jms_topic_exchange`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq}} deployments. This plug-in adds server-side support for the [RabbitMQ JMS client](https://github.com/rabbitmq/rabbitmq-jms-client){: .external} and supports JMS topic routing plus selection based on JMS SQL selection rules.
 
 The RabbitMQ JMS Client is required to communicate with the plug-in. Review the [JMS Client documentation page](https://www.rabbitmq.com/jms-client.html){: .external} that is provided by RabbitMQ for more detailed information on installation and configuration, along with examples.
 
@@ -78,9 +77,9 @@ More detailed information about the JMS plug-in can also be found in the RabbitM
 ## MQTT plug-in
 {: #mqtt-plug-in}
 
-The MQTT plug-in, `rabbitmq_mqtt`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments. Information on using the MQTT plug-in is available on the [MQTT plug-in](https://www.rabbitmq.com/mqtt.html){: .external} page.
+The MQTT plug-in, `rabbitmq_mqtt`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq}} deployments. Information on using the MQTT plug-in is available on the [MQTT plug-in](https://www.rabbitmq.com/mqtt.html){: .external} page.
 
 ## RabbitMQ Consistent Hash Exchange Type plug-in
 {: #consistent-hash-exchange-type-plug-in}
 
-The RabbitMQ plug-in, `rabbitmq_consistent_hash_exchange`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments. This plug-in adds a consistent-hash exchange type to RabbitMQ. Information on using the Consistent Hash Exchange plug-in is available in the [consistent_hash_exchange plug-in readme](https://github.com/rabbitmq/rabbitmq-server/blob/main/deps/rabbitmq_consistent_hash_exchange/README.md){: .external} page.
+The RabbitMQ plug-in, `rabbitmq_consistent_hash_exchange`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq}} deployments. This plug-in adds a consistent-hash exchange type to RabbitMQ. Information on using the Consistent Hash Exchange plug-in is available in the [consistent_hash_exchange plug-in readme](https://github.com/rabbitmq/rabbitmq-server/blob/main/deps/rabbitmq_consistent_hash_exchange/README.md){: .external} page.

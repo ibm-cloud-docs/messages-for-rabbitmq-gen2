@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026
+lastupdated: "2026-06-05"
 
 keywords: deployment, crn, task, gui, api endpoint, dashboard
 
@@ -15,10 +15,9 @@ subcollection: messages-for-rabbitmq-gen2
 # The Dashboard overview
 {: #dashboard-overview}
 
-
 [Gen 2]{: tag-purple}
 
-The _Overview_ page shows information about your {{site.data.keyword.messages-for-rabbitmq-gen2_full}} deployment. The overview includes essential identifying information.
+The _Overview_ page shows information about your {{site.data.keyword.messages-for-rabbitmq_full}} deployment. The overview includes essential identifying information.
 
 ## Overview
 {: #overview}
@@ -45,9 +44,9 @@ The _Endpoints_ pane within the _Overview_ pane contains connection strings for 
 
 Reference tables for the different connection types are available on the [Getting credentials and connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings) page.
 
-Connection strings reflect whether your deployment uses public endpoints, private endpoints or both. You can configure which endpoints are available on your deployment. For more information, see the [Service endpoints integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-service-endpoints&interface=ui) page.
+Connection strings use private endpoints only on Gen 2. Public endpoints are not available. For more information, see the [Service endpoints integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-service-endpoints&interface=ui) page.
 
-You can manage your {{site.data.keyword.messages-for-rabbitmq-gen2}} service through the {{site.data.keyword.databases-for}} API. This panel provides the essential information for using the API. For more information about the {{site.data.keyword.databases-for}} API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
+You can manage your {{site.data.keyword.messages-for-rabbitmq}} service through the {{site.data.keyword.databases-for}} API. This panel provides the essential information for using the API. For more information about the {{site.data.keyword.databases-for}} API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
 
 ## Resources
 {: #resources}
@@ -74,8 +73,8 @@ The _Observability_ tab provides access to the {{site.data.keyword.monitoringful
 ## Settings
 {: #settings}
 
-The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can 
-- view encryption details. Encryption at rest is enabled for all {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments. If you brought your own encryption key from [Key Protect](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect&interface=ui), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
+The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can
+- view encryption details. Encryption at rest is enabled for all {{site.data.keyword.messages-for-rabbitmq}} deployments. If you brought your own encryption key from [Key Protect](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect&interface=ui), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
 - [Change the admin password](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management&interface=ui#user-management-set-admin-password-ui)
 - [Implement or modify an IP allowlist](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-allowlisting&interface=ui)
 
@@ -92,4 +91,4 @@ Shows connected resources. You can use the `Create connection` button to bind th
 ## View docs
 {: #view-docs}
 
-The _View docs_ link from the `Actions` drop list opens the main documentation page for {{site.data.keyword.messages-for-rabbitmq-gen2}} in a new tab.
+The _View docs_ link from the `Actions` drop list opens the main documentation page for {{site.data.keyword.messages-for-rabbitmq}} in a new tab.

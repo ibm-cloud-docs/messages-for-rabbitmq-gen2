@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026, 2024
-lastupdated: "2024-20-09"
+  years: 2026,
+lastupdated: "2026-06-05"
 
 keyowrds: rabbitmq, shovel
 
@@ -13,7 +13,6 @@ subcollection: messages-for-rabbitmq-gen2
 
 # RabbitMQ Shovel
 {: #rabbitmq-shovel}
-
 
 [Gen 2]{: tag-purple}
 

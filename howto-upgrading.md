@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026
+lastupdated: "2026-06-05"
 
 keyowrds: rabbitmq, upgrading, major versions, changing versions, rabbitmq upgrading, new deployment, major version
 
@@ -14,12 +14,29 @@ subcollection: messages-for-rabbitmq-gen2
 # Upgrading to a new major version
 {: #upgrading}
 
-
 [Gen 2]{: tag-purple}
 
-When a major version of a database is at its end of life (EOL), it is a good idea to upgrade to a current major version.
+## Version management on Gen 2
+{: #version-management-gen2}
 
-Find the available versions of RabbitMQ on the [{{site.data.keyword.messages-for-rabbitmq-gen2_full}} catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create?catalog_query){: external} page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or through the {{site.data.keyword.databases-for}} API [`/deployables` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases).
+On {{site.data.keyword.messages-for-rabbitmq_full}} Gen 2, version management has been simplified:
+
+- **Major versions only**: Gen 2 lists only major version series (e.g., v4). Minor and patch versions are automatically managed by IBM Cloud.
+- **Automatic updates**: IBM Cloud automatically applies minor and patch version upgrades to ensure security and stability.
+- **Long-term stability**: This approach allows you to run your workload on a major version for a longer time without manual intervention for minor updates.
+- **Seamless upgrades**: IBM ensures that minor and patch version upgrades are seamless and do not disrupt your service.
+
+When you provision or upgrade a deployment on Gen 2, you select the major version (e.g., v4), and IBM Cloud manages the specific minor and patch versions.
+
+Version upgrades will be made available immediately after the Gen 2 MVP launch.
+{: note}
+
+Find the available major versions of RabbitMQ on the [{{site.data.keyword.messages-for-rabbitmq_full}} catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create?catalog_query){: external} page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or through the {{site.data.keyword.databases-for}} API [`/deployables` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases).
+
+## Upgrading major versions
+{: #upgrading-major-versions}
+
+When a major version of a database is at its end of life (EOL), upgrade to a current major version.
 
 Upgrade your new deployment by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) of your data into the new version. Restoring from a backup has a number of advantages:
 
@@ -97,9 +114,9 @@ You can use a shovel to move messages from a current cluster to a new cluster du
 ## Upgrading from v3.13 to v4
 {: #upgrading-v313-to-v4}
 
-There are [major changes](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes&interface=ui#messages-for-rabbitmq-gen2-18mar2025) between v3.x and v4.x. To upgrade your {{site.data.keyword.messages-for-rabbitmq-gen2}} instance from v3.13 to v4, complete the following extra step with [the admin user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management&interface=ui#admin-user) provisioned with your deployment that deletes the high availability related policies. Finally, complete Backup-Restore.
+There are [major changes](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes&interface=ui#messages-for-rabbitmq-gen2-18mar2025) between v3.x and v4.x. To upgrade your {{site.data.keyword.messages-for-rabbitmq}} instance from v3.13 to v4, complete the following extra step with [the admin user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management&interface=ui#admin-user) provisioned with your deployment that deletes the high availability related policies. Finally, complete Backup-Restore.
 
-Starting from v4, {{site.data.keyword.messages-for-rabbitmq-gen2}} does not support high availability of Classic Queues. Therefore, when you try to import definitions from v3.13 to v4, the restore fails because the definitions contain Classic Queue high availability related policies that are not recognized by the policy setting.
+Starting from v4, {{site.data.keyword.messages-for-rabbitmq}} does not support high availability of Classic Queues. Therefore, when you try to import definitions from v3.13 to v4, the restore fails because the definitions contain Classic Queue high availability related policies that are not recognized by the policy setting.
 
 To avoid this error and to upgrade successfully, complete the following steps as the `admin` user.
 
@@ -145,4 +162,4 @@ curl --cacert /path/to/cacert -u admin_username:password_of_admin_user -X DELETE
 ## Troubleshooting
 {: #upgrading-ts}
 
-If you encounter errors while importing definitions during an upgrade {{site.data.keyword.messages-for-rabbitmq-gen2}} , see [Why can't I import definitions from Messages for RabbitMQ version 3.9 to version 3.11?](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-troubleshoot-defs){: external}.
+If you encounter errors while importing definitions during an upgrade {{site.data.keyword.messages-for-rabbitmq}} , see [Why can't I import definitions from Messages for RabbitMQ version 3.9 to version 3.11?](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-troubleshoot-defs){: external}.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026
+lastupdated: "2026-06-05"
 
 keywords: rabbitmq, databases, soc, hipaa, gdpr, terms, rabbitmq security compliance, pci dss
 
@@ -15,55 +15,54 @@ subcollection: messages-for-rabbitmq-gen2
 # Security and compliance
 {: #security-compliance}
 
-
 [Gen 2]{: tag-purple}
 
 ## Protection against unauthorized access
 {: #protection-unauth}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2_full}} use the following methods to protect data in transit or in storage.
-- All {{site.data.keyword.messages-for-rabbitmq-gen2}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
+{{site.data.keyword.messages-for-rabbitmq_full}} use the following methods to protect data in transit or in storage.
+- All {{site.data.keyword.messages-for-rabbitmq}} connections use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via [Identity and Access Management (IAM)](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-iam).
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
-- All {{site.data.keyword.messages-for-rabbitmq-gen2}} disk is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect).
-- IP allowlisting - All deployments support [allowlisting IP addresses](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-allowlisting) to restrict access to the service.
-- Public and Private Networking - {{site.data.keyword.messages-for-rabbitmq-gen2}} is integrated with [Service Endpoints](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-service-endpoints). You can select whether to use connections over the public network, the {{site.data.keyword.cloud_notm}} internal network, or both.
-- Dedicated Cores - Allocating dedicated cores to your deployment introduces hypervisor-level isolation to your database instance, using isolated virtual machines to ensure your data processing remains separated from other customers. It also provides a guaranteed minimum number of CPUs to your deployment. Deployments with dedicated cores in the same Resource Group and {{site.data.keyword.cloud_notm}} Region can share a virtual machine.
+- All {{site.data.keyword.messages-for-rabbitmq}} disk is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect).
+- IP allowlisting - IP allowlisting is not available at MVP for Gen 2 but will be made available in a future release.
+- Private Networking Only - {{site.data.keyword.messages-for-rabbitmq}} Gen 2 supports **private endpoints only**. All connections use the {{site.data.keyword.cloud_notm}} private network through VPC. Public endpoints are not available on Gen 2.
+- Isolated Compute - Gen 2 uses Isolated Compute exclusively, providing dedicated resources with hypervisor-level isolation to your database instance. This ensures your data processing remains separated from other customers with a guaranteed minimum number of CPUs to your deployment.
 
 ## Data resilience
 {: #data-resilience}
 
-- [Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) are included in the service. {{site.data.keyword.messages-for-rabbitmq-gen2}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
-- RabbitMQ backups contain only definitions, topology, and metadata. Messages are not stored in backups.
-- All {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments are configured with replication. Deployments contain a cluster with three nodes where all three nodes are equal peers. Queues are mirrored on all three nodes.
+- [Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) are included in the service. {{site.data.keyword.messages-for-rabbitmq}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
+- **Gen 2 Enhancement**: RabbitMQ backups on Gen 2 include **both configuration data and message data**. Backups are decoupled from the deployment, meaning they persist even if the instance is deleted and can be restored to any compatible region.
+- All {{site.data.keyword.messages-for-rabbitmq}} deployments are configured with replication. Deployments contain a cluster with three nodes where all three nodes are equal peers. With Quorum Queues (default on Gen 2), messages are replicated across all nodes for high availability.
 - If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database node resides on a different host in the data center.
 - If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations.
 
 ## SOC 2 Type 2 Certification
 {: #soc2-type2-cert}
 
-{{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 2 report for {{site.data.keyword.messages-for-rabbitmq-gen2}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. The Trust Services Principles define adequate control systems and establish industry standards for service providers such as {{site.data.keyword.cloud_notm}} to safeguard their customers' data and information.
+{{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 2 report for {{site.data.keyword.messages-for-rabbitmq}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. The Trust Services Principles define adequate control systems and establish industry standards for service providers such as {{site.data.keyword.cloud_notm}} to safeguard their customers' data and information.
 
 You can request an SOC 2 Type 2 report from the customer portal or contact your sales representative. Alternatively, you can open a support ticket with [{{site.data.keyword.cloud_notm}} support](https://cloud.ibm.com/unifiedsupport/supportcenter){: .external}
 
 ## ISO 27017, ISO 27018
 {: #iso-27017-iso-27018}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} conforms to the guidelines for information security controls applicable to the provision and use of cloud services that are defined in [ISO 27017](https://www.iso.org/standard/43757.html){: .external} and [ISO 27018](https://www.iso.org/standard/76559.html){: .external}.
+{{site.data.keyword.messages-for-rabbitmq}} conforms to the guidelines for information security controls applicable to the provision and use of cloud services that are defined in [ISO 27017](https://www.iso.org/standard/43757.html){: .external} and [ISO 27018](https://www.iso.org/standard/76559.html){: .external}.
 
 ## General Data Protection Regulation (GDPR)
 {: #-gdpr}
 
 If you have an account with {{site.data.keyword.cloud_notm}}, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience.
+{{site.data.keyword.messages-for-rabbitmq}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience.
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} provides a [Data Sheet Addendum (DSA)](https://www.ibm.com/software/reports/compatibility/clarity-reports/report/html/softwareReqsForProduct?deliverableId=040987F07A6111E89D57EFEED3CB8BE9){: .external} with its policies as a Data Processor regarding content and data protection.
+{{site.data.keyword.messages-for-rabbitmq}} provides a [Data Sheet Addendum (DSA)](https://www.ibm.com/software/reports/compatibility/clarity-reports/report/html/softwareReqsForProduct?deliverableId=040987F07A6111E89D57EFEED3CB8BE9){: .external} with its policies as a Data Processor regarding content and data protection.
 
 ## HIPAA
 {: #hipaa}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} meets the required {{site.data.keyword.IBM_notm}} controls that are commensurate with the Health Insurance Portability and Accountability Act of 1996 (HIPAA) Security and Privacy Rule requirements. These requirements include the appropriate administrative, physical, and technical safeguards required of Business Associates in 45 CFR Part 160 and Subparts A and C of Part 164. HIPAA must be requested at the time of provisioning and requires a representative to sign a Business Associate Addendum (BAA) agreement with {{site.data.keyword.IBM_notm}}.
+{{site.data.keyword.messages-for-rabbitmq}} meets the required {{site.data.keyword.IBM_notm}} controls that are commensurate with the Health Insurance Portability and Accountability Act of 1996 (HIPAA) Security and Privacy Rule requirements. These requirements include the appropriate administrative, physical, and technical safeguards required of Business Associates in 45 CFR Part 160 and Subparts A and C of Part 164. HIPAA must be requested at the time of provisioning and requires a representative to sign a Business Associate Addendum (BAA) agreement with {{site.data.keyword.IBM_notm}}.
 
 ## PCI DSS
 {: #pci-dss}

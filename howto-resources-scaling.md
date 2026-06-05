@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026
+lastupdated: "2026-06-05"
 
 keywords: rabbitmq, databases, manual scaling, disk I/O, memory, CPU, rabbitmq scaling
 
@@ -15,24 +15,24 @@ subcollection: messages-for-rabbitmq-gen2
 # Scaling disk, memory, and CPU
 {: #resources-scaling}
 
-
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} Gen 2 uses the [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute) hosting model. To scale an Isolated Compute instance, set the relevant `hostflavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
-{: cli}
+**Important**: Scaling of disk or compute (CPU and RAM) is **not available at MVP** for {{site.data.keyword.messages-for-rabbitmq}} Gen 2. Scaling capabilities will be made available soon after the initial launch.
+{: important}
 
-To scale an [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute) instance, set the relevant `host_flavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
-{: api}
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 uses the [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute) hosting model exclusively. When scaling becomes available, you will be able to adjust resources by selecting different profile sizes.
 
-To scale an [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute) instance, set the relevant `host_flavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
-{: terraform}
+## Gen 2 profile sizes
+{: #gen2-profile-sizes}
 
-You can manually adjust the amount of resources available to your {{site.data.keyword.messages-for-rabbitmq-gen2_full}} deployment to suit your workload and the size of your data.
+Gen 2 offers new profile sizes that are optimized for better performance. Available profiles include various CPU and RAM configurations designed to meet different workload requirements.
+
+**Note**: Shared Compute is not available on Gen 2 VPC. All deployments use Isolated Compute with dedicated resources.
 
 ## Resource breakdown
 {: #resources-breakdown}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} deployments have three data members in a cluster, and resources are allocated to all three members equally. For example, the minimum storage of a RabbitMQ deployment is 3072 MB, which equates to an initial size of 1024 MB per member. The minimum RAM for a RabbitMQ deployment is 3072 MB, which equates to an initial allocation of 1024 MB per member.
+{{site.data.keyword.messages-for-rabbitmq}} deployments have three data members in a cluster, and resources are allocated to all three members equally. For example, the minimum storage of a RabbitMQ deployment is 3072 MB, which equates to an initial size of 1024 MB per member. The minimum RAM for a RabbitMQ deployment is 3072 MB, which equates to an initial allocation of 1024 MB per member.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: tip}
@@ -85,43 +85,17 @@ If you find that your database workloads need more CPU resources, you can scale 
 
 - Scaling operations are logged in [{{site.data.keyword.atracker_full}}](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-at_events).
 
-- Autoscaling is not available in Gen 2. Monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring) and scale manually as needed.
+- **Scaling is not available at MVP** but will be made available soon after launch.
+- Autoscaling is not available in Gen 2. Monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring).
+- When scaling becomes available, you will be able to scale manually as needed.
 
 ## Review current resources and hosting model
 {: #review-resources-ui}
 {: ui}
 
-In the **Resources** tab, you find the **Hosting model** and **Resource allocations** tiles. These tiles reflect your current resources and hosting model. Select *Configure* to adjust the settings in each tile.
+In the **Resources** tab, you can view your current resource allocations and hosting model. Gen 2 uses Isolated Compute exclusively.
 
-## Scaling via the UI
-{: #scaling-ui}
-{: ui}
-
-In the **Resources** tab of the UI, select *Configure* on the **Resource allocations** tile. This opens up a panel where you can adjust your resources.
-
-If your database is on the Isolated Compute hosting model, you see a "Host sizes" table, where you can select the vCPU and RAM configuration per member for your database.
-
-If you are on the Shared Compute hosting model, you see the Small configuration, providing 0.5 vCPU and 4 GB RAM per member; the Small Custom option; or Custom configuration. Small Custom indicates that your database was scaled with the CLI, API, or Terraform, which provides more fine-grained resource scaling, along with an option for automatically allocated vCPU pro-rated against RAM value. On the UI, you can scale to Small and Custom, but are not able to scale to the fine-grained values provided by the CLI, API, or Terraform. With Custom, drag the slider or adjust the value in the input box to select your database's per member vCPU and RAM values.
-
-The "Disk (GB/member)" slider is your disk selection per member. Drag the slider or adjust the number in the input box to change the number of GB disk. Note that Disk is tied to IOPS at 1 GB = 10 IOPS.
-
-Members is the number of members of your database. For RabbitMQ, members are set to 3.
-
-Review your total estimated cost in the calculator on the bottom. Note that if you have grandfathered costs, also known as legacy pricing structure, scaling your database instance removes some or all of your legacy pricing. For more information on grandfathering and when it ends, see [Hosting models transition timeline](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-hosting-model-transition&interface=cli#hosting-model-transition-timeline-may25).
-
-Click *Apply changes* to trigger the scaling operation.
-
-## Switch to and between hosting models in the UI
-{: #resources-switching-ui}
-{: ui}
-
-In the **Resources** tab of the UI, select *Configure* on the **Hosting model** tile. This opens up a panel where you can adjust your hosting model selection.
-
-The first option available is **Select your hosting model**. Here, you can switch to a different hosting model.
-
-Below, you see the options to also adjust the resources of the new hosting model you selected. Follow the instructions in the previous section, "Scaling in the UI" to adjust your resources.
-
-Click *Apply changes* triggers this scale operation.
+**Note**: Scaling functionality in the UI will be available soon after MVP launch.
 
 ## Review current resources and hosting model
 {: #review-resources-cli}
@@ -396,7 +370,7 @@ output "ICD RabbitMQ database connection string" {
 ```
 {: codeblock}
 
-Alternatively, you can use pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.messages-for-rabbitmq-gen2}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external} that support the auto-scaling feature.
+Alternatively, you can use pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.messages-for-rabbitmq}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external} that support the auto-scaling feature.
 
 
 ## Switching to and scaling hosting models in Terraform
@@ -405,7 +379,7 @@ Alternatively, you can use pre-built, open-source, and enterprise-ready [Terrafo
 
 Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be scaled to. You can change this later.
 
-To scale your {{site.data.keyword.messages-for-rabbitmq-gen2}} instance to the Shared Compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared Compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`.
+To scale your {{site.data.keyword.messages-for-rabbitmq}} instance to the Shared Compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared Compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`.
 
 See the following example:
 
@@ -451,7 +425,7 @@ output "ICD RabbitMQ database connection string" {
 ```
 {: codeblock}
 
-Scale your {{site.data.keyword.messages-for-rabbitmq-gen2}} instance to Isolated Compute with the same `"host_flavor"` parameter, set to the desired Isolated size. This command works to scale your database instance to a different Isolated Compute size, as well as to move from another host flavor to the Isolated Compute host flavor. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both an Isolated size selection and separate CPU and RAM allocation selections.
+Scale your {{site.data.keyword.messages-for-rabbitmq}} instance to Isolated Compute with the same `"host_flavor"` parameter, set to the desired Isolated size. This command works to scale your database instance to a different Isolated Compute size, as well as to move from another host flavor to the Isolated Compute host flavor. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both an Isolated size selection and separate CPU and RAM allocation selections.
 
 To implement your change, run `terraform apply`.
 

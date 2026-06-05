@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026,
+lastupdated: "2026-06-05"
 
 keywords: rabbitmq, databases, memory alarms, disk alarms, monitoring, disk I/O, rabbitmq performance
 
@@ -15,22 +15,21 @@ subcollection: messages-for-rabbitmq-gen2
 # Performance
 {: #performance}
 
-
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2_full}} deployments can be both manually [scaled to your usage](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-resources-scaling), or configured to [autoscale](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling) under certain resource conditions. When you are tuning the performance of your deployment, consider a few factors.
+{{site.data.keyword.messages-for-rabbitmq_full}} deployments can be both manually [scaled to your usage](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-resources-scaling), or configured to [autoscale](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling) under certain resource conditions. When you are tuning the performance of your deployment, consider a few factors.
 
 ## Monitoring your deployment
 {: #monitoring-deployment}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} deployments offer an integration with the [{{site.data.keyword.monitoringfull}} service](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring) for basic monitoring of resource usage on your deployment. Many of the available metrics, like disk usage and IOPS, are presented to help you configure [autoscaling](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling) on your deployment. Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion.
+{{site.data.keyword.messages-for-rabbitmq}} deployments offer an integration with the [{{site.data.keyword.monitoringfull}} service](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring) for basic monitoring of resource usage on your deployment. Many of the available metrics, like disk usage and IOPS, are presented to help you configure [autoscaling](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling) on your deployment. Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion.
 
 ## RabbitMQ memory usage
 {: #rabbitmq-mem-usage}
 
 [RabbitMQ provides a robust breakdown of memory usage](https://www.rabbitmq.com/memory-use.html#breakdown){: external}, which can provide you information on how memory resources are allocated and being used in your deployment. Most notably, connections, queue mirrors, and accumulated messages all use memory. If your use-case calls for many open connections at a time, you might want to look into increasing memory. Likewise, if you have queues that contain only transient messages that don't need replication, you can bring down memory usage by adjusting their Mirror Classic Queue policy.  Changes to mirroring policy, where messages have fewer or no mirrors, can cause messages to be deleted on node restarts and those messages are gone forever.
 
-Occasionally, RabbitMQ can experience memory spikes. Specifically, with {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments, updates and maintenance where we restart or delete a node causes memory usage to increase to resync the restarted or new node. If your RabbitMQ consistently uses a high percentage of its available memory, one of these spikes can run your deployment out of memory and cause it to crash. It is a good idea to scale your memory so that it can accommodate resyncing a node.
+Occasionally, RabbitMQ can experience memory spikes. Specifically, with {{site.data.keyword.messages-for-rabbitmq}} deployments, updates and maintenance where we restart or delete a node causes memory usage to increase to resync the restarted or new node. If your RabbitMQ consistently uses a high percentage of its available memory, one of these spikes can run your deployment out of memory and cause it to crash. It is a good idea to scale your memory so that it can accommodate resyncing a node.
 
 Mirror Classic Queue is deprecated from RabbitMQ v4.x. Customers are expected to use Quorum Queues or Streams for durability of messages.
 {: important}
@@ -43,19 +42,19 @@ By default, when the RabbitMQ server uses above 40% of the available RAM, it rai
 ## RabbitMQ disk alarms
 {: #rabbitmq-disk-alarms}
 
-By default, when the RabbitMQ server detects that free disk space has dropped below a certain threshold, it raises a disk alarm. The threshold for {{site.data.keyword.messages-for-rabbitmq-gen2}} is 80% of your deployment's disk size. The alarm blocks incoming messages from publishers and prevents messages in memory from being written to disk. The alarm is cluster-wide so if disk space on one node gets too low, the alarm blocks on all nodes. To clear the alarm, either messages that have been written to disk need to be consumed and that space is reclaimed, or scale your deployment to a larger disk size.
+By default, when the RabbitMQ server detects that free disk space has dropped below a certain threshold, it raises a disk alarm. The threshold for {{site.data.keyword.messages-for-rabbitmq}} is 80% of your deployment's disk size. The alarm blocks incoming messages from publishers and prevents messages in memory from being written to disk. The alarm is cluster-wide so if disk space on one node gets too low, the alarm blocks on all nodes. To clear the alarm, either messages that have been written to disk need to be consumed and that space is reclaimed, or scale your deployment to a larger disk size.
 
 More information about memory alarms can be found in the [RabbitMQ documentation](https://www.rabbitmq.com/disk-alarms.html){: external}.
 
 ## Disk IOPS
 {: #disk-iops}
 
-The number of input/output operations per second (IOPS) is limited by the type of storage volume that is being used. Storage volumes for {{site.data.keyword.messages-for-rabbitmq-gen2}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/BlockStorage?topic=BlockStorage-orderingBlockStorage&interface=ui). IOPS limits can affect RabbitMQ message throughput and storage operations. Reaching these limits can cause disk to fall behind on reclaiming space after messages are consumed, leading to disk alarms and publisher throttling until activity slows down. You can increase the number IOPS available to your deployment by increasing disk space.
+The number of input/output operations per second (IOPS) is limited by the type of storage volume that is being used. Storage volumes for {{site.data.keyword.messages-for-rabbitmq}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/BlockStorage?topic=BlockStorage-orderingBlockStorage&interface=ui). IOPS limits can affect RabbitMQ message throughput and storage operations. Reaching these limits can cause disk to fall behind on reclaiming space after messages are consumed, leading to disk alarms and publisher throttling until activity slows down. You can increase the number IOPS available to your deployment by increasing disk space.
 
-## Quorum queues 
+## Quorum queues
 {: #quorum-queues}
 
-High-availability can be managed with [quorum queues](https://www.rabbitmq.com/quorum-queues.html). Using quorum queues impacts performance; it needs more memory and disk space for the WAL that it uses to maintain state for operations. It also needs more disk I/O as it persists all data on disk. If you have implemented quorum queues, or are considering them, the RabbitMQ documentation has a good write-up of their effect on both [resource use](https://www.rabbitmq.com/quorum-queues.html#resource-use) and [performance](https://www.rabbitmq.com/quorum-queues.html#performance). 
+High-availability can be managed with [quorum queues](https://www.rabbitmq.com/quorum-queues.html). Using quorum queues impacts performance; it needs more memory and disk space for the WAL that it uses to maintain state for operations. It also needs more disk I/O as it persists all data on disk. If you have implemented quorum queues, or are considering them, the RabbitMQ documentation has a good write-up of their effect on both [resource use](https://www.rabbitmq.com/quorum-queues.html#resource-use) and [performance](https://www.rabbitmq.com/quorum-queues.html#performance).
 Quorum Queues will be the default queue type that will support high-availability with version 4. Mirrored (HA) Classic Queues will be unsupported after v3.13. For more information, see the [release notes](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes&interface=ui#messages-for-rabbitmq-gen2-18mar2025) and [Migrating from Classic Queues to Quorum Queues](https://cloud.ibm.com/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-migrating_classic_quorum&interface=ui).
 
 ## RabbitMQ alarm monitoring
@@ -70,7 +69,7 @@ For more checks related to memory alarms, you can gather information that is rel
 ## Standard health checks
 {: #health-checks}
 
-The [RabbitMQ HTTP API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-management-plugin#rabbitmq-management-http-api) provides a couple of [health check](https://www.rabbitmq.com/monitoring.html#health-checks){: external} endpoints to verify the state of the RabbitMQ nodes in your deployment. 
+The [RabbitMQ HTTP API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-management-plugin#rabbitmq-management-http-api) provides a couple of [health check](https://www.rabbitmq.com/monitoring.html#health-checks){: external} endpoints to verify the state of the RabbitMQ nodes in your deployment.
 
 - [All Nodes](https://www.rabbitmq.com/monitoring.html#node-metrics){: external} - `GET /api/healthcheck/node`
 - [Single Node](https://www.rabbitmq.com/monitoring.html#node-metrics){: external} - `GET /api/healthcheck/node/<node_name>`

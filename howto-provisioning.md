@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026
+lastupdated: "2026-06-05"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision rabbitmq
 
@@ -15,10 +15,9 @@ subcollection: messages-for-rabbitmq-gen2
 # Provisioning
 {: #provisioning}
 
-
 [Gen 2]{: tag-purple}
 
-Provision a {{site.data.keyword.messages-for-rabbitmq-gen2_full}} deployment through the [catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
+Provision a {{site.data.keyword.messages-for-rabbitmq_full}} deployment through the [catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
@@ -37,7 +36,9 @@ Provision from the console by specifying the following parameters.
 {: #hosting_model}
 {: ui}
 
-{{site.data.keyword.messages-for-rabbitmq-gen2}} Gen 2 uses the **Isolated Compute** hosting model, which provides secure single-tenant offering for complex, highly-performant enterprise workloads with dedicated resources.
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 uses the **Isolated Compute** hosting model exclusively, which provides a secure single-tenant offering for complex, highly-performant enterprise workloads with dedicated resources.
+
+**Note**: Shared Compute is not available on Gen 2 VPC.
 
 For more information, see [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute).
 
@@ -45,18 +46,20 @@ For more information, see [Isolated Compute](/docs/cloud-databases-gen2?topic=cl
 {: #resource_allocation}
 {: ui}
 
-Use the table to choose the machine size (CPU and RAM configuration) for each member of your deployment, and specify the disk size.
+Gen 2 offers new profile sizes that are optimized for better performance. Use the table to choose the machine size (CPU and RAM configuration) for each member of your deployment, and specify the disk size.
 
 Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 {: note}
+
+**Note**: Scaling of disk or compute is not available at MVP but will be made available soon after launch.
 
 ### Service configuration
 {: #service_configuration}
 {: ui}
 
-- **Database Version** - [Set only at deployment]{: tag-red} The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+- **Database Version** - [Set only at deployment]{: tag-red} On Gen 2, you select the major version (e.g., v4). IBM Cloud automatically manages minor and patch versions to ensure security and stability. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints** - [Set only at deployment]{: tag-red} Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. The default setting is *private*.
+- **Endpoints** - [Set only at deployment]{: tag-red} Gen 2 supports **private endpoints only**. Public endpoints are not available on Gen 2 VPC.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
@@ -84,7 +87,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```
    {: pre}
 
-   For example, to provision a {{site.data.keyword.messages-for-rabbitmq-gen2}} Isolated Compute instance with 4 CPU and 16 GB RAM:
+   For example, to provision a {{site.data.keyword.messages-for-rabbitmq}} Isolated Compute instance with 4 CPU and 16 GB RAM:
 
    ```sh
    ibmcloud resource service-instance-create test-database messages-for-rabbitmq-gen2 standard us-south -p '{"members_host_flavor": "b3c.4x16.encrypted"}' --service-endpoints="private"
@@ -97,13 +100,13 @@ Before provisioning, follow the instructions provided in the documentation to in
    | Field | Description | Flag |
    |-------|------------|------------|
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
-   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.messages-for-rabbitmq-gen2}}, use `messages-for-rabbitmq-gen2`. |  |
+   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.messages-for-rabbitmq}}, use `messages-for-rabbitmq-gen2`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. For more information, see the table below or [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute).| |
-   | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-service-endpoints) of your deployment. Gen 2 supports `private` endpoints only. |  |
+   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. Gen 2 offers new profile sizes optimized for better performance. For more information, see the table below or [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute).| |
+   | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-service-endpoints) of your deployment. Gen 2 supports **private endpoints only**. |  |
    {: caption="Basic command format fields" caption-side="top"}
 
    In the CLI, `service-endpoints` is a flag, not a parameter.
@@ -331,17 +334,6 @@ Follow these steps to provision using the [Resource Controller API](https://clou
               "allocation_mb": 245760
             },
             "hosting_size": "xl"
-          },
-          {
-            "id": "multitenant",
-            "name": "multitenant",
-            "cpu": {
-              "allocation_count": 0
-            },
-            "memory": {
-              "allocation_mb": 0
-            },
-            "hosting_size": ""
           }
         ]
       }
@@ -350,7 +342,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
     ```
     {: pre}
 
-    As shown, the Isolated Compute host flavors available to a {{site.data.keyword.messages-for-rabbitmq-gen2}} instance in the `us-south` region are:
+    As shown, the Isolated Compute host flavors (new profile sizes optimized for better performance) available to a {{site.data.keyword.messages-for-rabbitmq}} instance in the `us-south` region are:
 
     - `b3c.4x16.encrypted`
     - `b3c.8x32.encrypted`
@@ -399,28 +391,9 @@ Follow these steps to provision using the [Resource Controller API](https://clou
        ```
 {: .pre}
 
-To make a Shared Compute instance, follow this example:
+Provision a {{site.data.keyword.messages-for-rabbitmq}} Isolated Compute instance with the `"members_host_flavor"` parameter set to the desired Isolated size. Gen 2 offers new profile sizes optimized for better performance. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
-   ```sh
-   curl -X POST \
-     https://resource-controller.cloud.ibm.com/v2/resource_instances \
-     -H "Authorization: Bearer <>" \
-     -H 'Content-Type: application/json' \
-       -d '{
-       "name": "my-instance",
-       "target": "us-south",
-       "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-       "resource_plan_id": "messages-for-rabbitmq-gen2-standard"
-       "parameters": {
-        "members_host_flavor": "multitenant",
-        "members_memory_allocation_mb": 12288,
-        "members_cpu_allocation_count": 3
-      }
-     }'
-   ```
-   {: .pre}
-
-Provision a {{site.data.keyword.messages-for-rabbitmq-gen2}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+**Note**: Shared Compute is not available on Gen 2.
 
    ```sh
    curl -X POST \
@@ -447,31 +420,32 @@ The fields in the command are described in the table that follows.
    | Field | Description | Flag |
    |-------|------------|------------|
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
-   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.messages-for-rabbitmq-gen2}}, use `messages-for-rabbitmq-gen2`. |  |
+   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.messages-for-rabbitmq}}, use `messages-for-rabbitmq-gen2`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | `standard` |  |
    | `TARGET` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
+   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment. Gen 2 supports **private endpoints only**. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-   | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
+   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. Gen 2 offers new profile sizes optimized for better performance. Shared Compute is not available on Gen 2. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
    {: caption="Basic command format fields" caption-side="top"}
 
 ### The `members host flavor` parameter
 {: #host-flavor-parameter-api}
 {: api}
 
-The `members_host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
+The `members_host_flavor` parameter defines your Compute sizing. Gen 2 uses Isolated Compute exclusively with new profile sizes optimized for better performance. Input the appropriate value for your desired CPU and RAM configuration.
 
 | **Members host flavor** | **members_host_flavor value** |
 |:-------------------------:|:---------------------:|
-| Shared Compute            | `multitenant`    |
 | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
 | 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
 | 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
 | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
 | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Members host flavor sizing parameter" caption-side="bottom"}
+{: caption="Members host flavor sizing parameter (Gen 2 new profile sizes)" caption-side="bottom"}
+
+**Note**: Shared Compute (`multitenant`) is not available on Gen 2.
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
@@ -503,7 +477,7 @@ Use Terraform to manage your infrastructure through the [`ibm_database` Resource
 
 Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later.
 
-Provision a {{site.data.keyword.messages-for-rabbitmq-gen2}} Shared hosting model instance with the `"host_flavor"` parameter set to `multitenant`. See the following example:
+Provision a {{site.data.keyword.messages-for-rabbitmq}} Shared hosting model instance with the `"host_flavor"` parameter set to `multitenant`. See the following example:
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -548,7 +522,7 @@ output "ICD Etcd database connection string" {
 ```
 {: codeblock}
 
-Provision a {{site.data.keyword.messages-for-rabbitmq-gen2}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+Provision a {{site.data.keyword.messages-for-rabbitmq}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
 ```terraform
 data "ibm_resource_group" "group" {

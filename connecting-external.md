@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026,
+lastupdated: "2026-06-05"
 
 keywords: rabbitmq, rabbitmq connecting, connecting to rabbitmq
 
@@ -14,10 +14,9 @@ subcollection: messages-for-rabbitmq-gen2
 # Connecting an external application
 {: #external-app}
 
-
 [Gen 2]{: tag-purple}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.messages-for-rabbitmq-gen2_full}}. Your deployment has connection strings specifically for drivers, clients, and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.messages-for-rabbitmq_full}}. Your deployment has connection strings specifically for drivers, clients, and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
 The connection strings can be used by any of the credentials you created on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
 
@@ -100,7 +99,7 @@ The "mqtts" section contains the information that an MQTT client needs to connec
 ## TLS and service proprietary certificate support
 {: #tls-cert-support}
 
-All connections to {{site.data.keyword.messages-for-rabbitmq-gen2}} are TLS 1.2 enabled, so the driver or client you use to connect needs to be able to support encryption. Your deployment also comes with a service proprietary certificate so the driver can verify the server upon connection.
+All connections to {{site.data.keyword.messages-for-rabbitmq}} are TLS 1.2 enabled, so the driver or client you use to connect needs to be able to support encryption. Your deployment also comes with a service proprietary certificate so the driver can verify the server upon connection.
 
 For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-faq-cert){: external}.
 
