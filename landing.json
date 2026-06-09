@@ -19,10 +19,6 @@
         "href": "/docs/cloud-databases-gen2?topic=cloud-databases-gen2-overview-gen1-gen2"
       },
       {
-        "title": "High Availability with Quorum Queues",
-        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-high-availability"
-      },
-      {
         "title": "Provisioning",
         "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-provisioning"
       },
@@ -62,16 +58,8 @@
     "view_more": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes",
     "tiles": [
       {
-        "date": "19 May 2026",
-        "title": "Gen 2 platform updates: AMQP/MQTT only, private endpoints, Quorum Queues default"
-      },
-      {
-        "date": "19 May 2026",
-        "title": "Enhanced backups: Config + message data included"
-      },
-      {
-        "date": "19 May 2026",
-        "title": "New optimized profile sizes for better performance"
+        "date": "25 June 2026",
+        "title": "Gen 2 platform GA"
       }
     ]
   }
