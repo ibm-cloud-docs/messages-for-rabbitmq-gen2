@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: rabbitmq, databases, soc, hipaa, gdpr, terms, rabbitmq security compliance, pci dss
 
@@ -26,15 +26,15 @@ subcollection: messages-for-rabbitmq-gen2
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.messages-for-rabbitmq}} disk is provided on storage encrypted with LUKS using AES-256. The default keys are managed by [{{site.data.keyword.keymanagementserviceshort}}](/docs/key-protect?topic=key-protect-about). Bring-your-own-key (BYOK) for encryption is also available through [Key Protect Integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect).
 - IP allowlisting - IP allowlisting is not available at MVP for Gen 2 but will be made available in a future release.
-- Private Networking Only - {{site.data.keyword.messages-for-rabbitmq}} Gen 2 supports **private endpoints only**. All connections use the {{site.data.keyword.cloud_notm}} private network through VPC. Public endpoints are not available on Gen 2.
-- Isolated Compute - Gen 2 uses Isolated Compute exclusively, providing dedicated resources with hypervisor-level isolation to your database instance. This ensures your data processing remains separated from other customers with a guaranteed minimum number of CPUs to your deployment.
+- Private Networking Only - {{site.data.keyword.messages-for-rabbitmq}} Gen 2 supports **private endpoints only**. All connections use the {{site.data.keyword.cloud_notm}} private network through VPC. Public endpoints are not available on Gen 2. Your application can connect to a public network via a VPE established in {{site.data.keyword.cloud_notm}}.
+- Isolated Compute - Gen 2 uses Isolated Compute exclusively, providing dedicated resources with hypervisor-level isolation to your RabbitMQ instance. This ensures your data processing remains separated from other customers with a guaranteed minimum number of CPUs to your deployment.
 
 ## Data resilience
 {: #data-resilience}
 
 - [Backups](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) are included in the service. {{site.data.keyword.messages-for-rabbitmq}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
 - **Gen 2 Enhancement**: RabbitMQ backups on Gen 2 include **both configuration data and message data**. Backups are decoupled from the deployment, meaning they persist even if the instance is deleted and can be restored to any compatible region.
-- All {{site.data.keyword.messages-for-rabbitmq}} deployments are configured with replication. Deployments contain a cluster with three nodes where all three nodes are equal peers. With Quorum Queues (default on Gen 2), messages are replicated across all nodes for high availability.
+- All {{site.data.keyword.messages-for-rabbitmq}} deployments are configured with replication. Deployments contain a cluster with three nodes where all three nodes are equal peers. With Quorum Queues (default on Gen 2), messages are replicated across all nodes for high availability and durability.
 - If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database node resides on a different host in the data center.
 - If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations.
 
