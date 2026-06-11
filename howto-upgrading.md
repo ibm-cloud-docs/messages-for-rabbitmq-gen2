@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keyowrds: rabbitmq, upgrading, major versions, changing versions, rabbitmq upgrading, new deployment, major version
 
@@ -150,7 +150,7 @@ rabbitmqadmin --username=admin_username --password=password_of_admin_user --use-
 {: api}
 
 1. Get the **cacert file** using the {{site.data.keyword.cloud_notm}} CLI completing the steps at [ibmcloud cdb deployment-cacert](/docs/cli?topic=cli-cdb-reference#deployment-cacert).
-2. Use the downloaded **cacert file** and your admin user credentials to authenticate and delete the **ha-all** policy. In this example, **%2F** is the default vhost "/" where ha-all policy will be created. Change the name of the vhost accordingly:
+2. Use the downloaded **cacert file** and your Manager user credentials to authenticate and delete the **ha-all** policy. In this example, **%2F** is the default vhost "/" where ha-all policy will be created. Change the name of the vhost accordingly:
 ```sh
 curl --cacert /path/to/cacert -u admin_username:password_of_admin_user -X DELETE https://<hostname>:<https_port>/api/policies/%2F/ha-all
 ```

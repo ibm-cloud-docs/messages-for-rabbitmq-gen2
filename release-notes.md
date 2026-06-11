@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -48,8 +48,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
   - Scheduled backups and decoupled backup storage are available
 
 **Profile Sizes**
-: - New profile sizes optimized for better performance
-  - Shared Compute is not available on Gen 2 VPC
+: - Fixed profiles (newest CPU generation, consistent performance) and Flex profiles (across CPU generations, cost-optimized)
   - All deployments use Isolated Compute with dedicated resources
 
 **Version Management**
@@ -202,7 +201,7 @@ RabbitMQ v3.13 is live
 {: release-note}
 
 New hosting models
-:  You can choose between two hosting models: Isolated Compute and Shared Compute. Isolated Compute is a secure single-tenant offering for complex, highly performant enterprise workloads. Shared Compute is a flexible multi-tenant offering for dynamic, fine-tuned, and decoupled capacity selections. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-types){: external}.
+:  Gen 2 uses Isolated Compute exclusively, a secure single-tenant offering for complex, highly performant enterprise workloads with dedicated resources. For more information, see [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute).
 
 ## 12 February 2024
 {: #messages-for-rabbitmq-gen2-12feb2024}

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: rabbitmq, databases, rabbitmq connection strings
 
@@ -22,13 +22,13 @@ To connect to {{site.data.keyword.messages-for-rabbitmq_full}}, you need some us
 
 You can also grab connection strings from the [CLI](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
-A {{site.data.keyword.messages-for-rabbitmq}} deployment is provisioned with an admin user, and after you [set the admin password](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management&interface=ui#user-management-set-admin-password-ui), you can use its credentials to connect to your deployment.
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 deployments do not include a default admin user. You must [create a Manager or Writer user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user) through Service Credentials to connect to your deployment.
 {: .tip}
 
 ## Credentials and connection strings for more users
 {: #cred-connection-strings-additional-users}
 
-Access to your {{site.data.keyword.messages-for-rabbitmq}} deployment is not limited to the root user. You can create users by using the _Service Credentials_ panel, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API.
+You can create users with Manager or Writer roles by using the _Service Credentials_ panel, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API.
 
 All users on your deployment can use the connection strings. Gen 2 supports **private endpoints only**.
 
@@ -66,7 +66,7 @@ Full connection information is returned by the `ibmcloud cdb deployment-connecti
 ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [--endpoint-type <endpoint type>]
 ```
 
-If you don't specify a user, the `deployment-connections` commands return information for the admin user by default. Gen 2 deployments use private endpoints only, so you must specify `--endpoint-type private`.
+If you don't specify a user, the `deployment-connections` commands return information for the first available user. Gen 2 deployments use private endpoints only, so you must specify `--endpoint-type private`.
 
 To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-icd-cli#icd-cli-install).
 {: .tip}

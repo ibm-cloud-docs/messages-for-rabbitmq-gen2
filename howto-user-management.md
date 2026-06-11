@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026,
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: rabbitmq, rabbitmq users
 
@@ -16,85 +16,144 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messages-for-rabbitmq_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/access-control.html#permissions).
+{{site.data.keyword.messages-for-rabbitmq_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/access-control.html#permissions){: external}.
+{: shortdesc}
 
-When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given an `admin` user to access and manage RabbitMQ. You can also add users in the _Service Credentials_ panel, which allows for access to RabbitMQ to be integrated with your {{site.data.keyword.cloud_notm}} account and [IAM](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-iam with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin), or the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 instances do not include a default admin user. Instead, you create users with the `Manager` or `Writer` role using the {{site.data.keyword.cloud_notm}} service credential interface — via UI, CLI, or API. You can also create users directly in RabbitMQ through the Management UI.
 
 Since {{site.data.keyword.messages-for-rabbitmq}} comes with the RabbitMQ Management plug-in enabled, user access is also controlled by [user tags](https://www.rabbitmq.com/management.html#permissions){: external}. These tags control what information is available to users through the management UI, `rabbitmqadmin`, and the RabbitMQ HTTP API.
 
-## The `admin` user
-{: #admin-user}
+## Manager users
+{: #manager-users}
 
-Every RabbitMQ deployment comes with an `admin` user. This `admin` user had full administrative privileges on your RabbitMQ deployment. The primary difference between the admin user and any other users you add to your deployment is the ability to provision new vhosts and manage all other users' permissions and access. `admin` is the only user that is initially granted access to all the settings and configuration that is found in the _Admin_ tab in the management UI.
+Users created with the `Manager` role function as admin-like users and have full administrative privileges on your RabbitMQ deployment. Manager users can:
 
-Before you log in with the admin user, set the password.
+- Provision new virtual hosts (vhosts)
+- Manage all other users' permissions and access
+- Access all settings and configuration in the _Admin_ tab in the RabbitMQ Management UI
+- Configure, write, and read on all virtual hosts
+- View all connections, channels, and node-related information
 
-### Setting the Admin password in the UI
-{: #user-management-set-admin-password-ui}
-{: ui}
+Manager users are automatically tagged with the "administrator" and "monitoring" tags in RabbitMQ, providing full access to the management plug-in.
 
-Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
+For instructions on creating Manager users, see [Creating users with administrative privileges](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user).
 
-### Setting the Admin password in the CLI
-{: #user-management-set-admin-password-cli}
-{: cli}
+## Writer users
+{: #writer-users}
 
-Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the admin password.
+Users created with the `Writer` role have more limited privileges:
 
-For example, to set the admin password for a deployment named `example-deployment`, use the following command:
+- Full permissions (configure, write, and read) on the default virtual host
+- Tagged with the "monitoring" tag, allowing access to the management plug-in
+- Can view connections, channels, and node-related information
+- Have a limited view of the _Admin_ tab
 
-```sh
-ibmcloud cdb user-password example-deployment admin <newpassword>
-```
-{: pre}
+Writer users cannot create new virtual hosts or manage other users' permissions.
 
-### Setting the Admin password in the API
-{: #user-management-set-admin-password-api}
-{: api}
-
-The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this deployment through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
-
-```sh
-curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
--H `Authorization: Bearer <>` \
--H `Content-Type: application/json` \
--d `{"password":"newrootpasswordsupersecure21"}` \
-```
-{: pre}
-
-## _Service credential_ users
+## Creating users through Service Credentials
 {: #service-cred-user}
 
-Users that you [create through the _Service Credentials_ panel](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings) are given full permissions to configure, write, and read on the default Virtual Host.
+You can create users through the _Service Credentials_ panel in the {{site.data.keyword.cloud_notm}} console. For detailed instructions, see [Creating users and getting connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
 
-They are also automatically tagged with the "monitoring" tag, allowing users to access the management plug-in and see all connections, channels, and node-related information. These users given a limited view of the _Admin_ tab and the functions that are found there.
+When creating a service credential, you can select either:
+- **Manager** role - Creates a user with full administrative privileges
+- **Writer** role - Creates a user with limited privileges on the default virtual host
 
-If you need users that are created from _Service Credentials_ to have more privileges, you can log in with the admin user and grant them.
+Users created through Service Credentials are integrated with {{site.data.keyword.cloud_notm}} [IAM](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-iam).
 
-## Users created through the CLI
+## Creating users through the CLI
 {: #cli-user}
 {: cli}
 
-Users that you create through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli) are given the same permissions as _Service credential_ users. They have full permissions on the default Virtual Host and are tagged with the "monitoring" tag. If you need them to have more privileges, you can grant them while logged in with the admin user.
+You can create users through the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/cli?topic=cli-install-ibmcloud-cli) using the `ibmcloud resource service-key-create` command.
 
-Users that are created directly from the CLI do not appear in _Service credentials_, but you can [add them](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings#adding-users-to-_service-credentials_) if you choose.
+To create a Manager user:
 
-## Users created through the API
+```sh
+ibmcloud resource service-key-create <credential-name> Manager --instance-name <instance-name>
+```
+{: pre}
+
+To create a Writer user:
+
+```sh
+ibmcloud resource service-key-create <credential-name> Writer --instance-name <instance-name>
+```
+{: pre}
+
+Users created through the CLI have the same permissions as users created through Service Credentials. They do not appear in _Service Credentials_ by default, but you can [add them](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings#adding-users-to-_service-credentials_) if you choose.
+
+## Creating users through the API
 {: #api-user}
 {: api}
 
-Users that you create through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction) are given the same permissions as _Service Credential_ users. They have full permissions on the default Virtual Host and are tagged with the "monitoring" tag. If you need them to have more privileges, you can grant them while logged in with the admin user.
+You can create users through the [{{site.data.keyword.cloud_notm}} Resource Controller API](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-key){: external}.
 
-Users that are created directly from the API do not appear in _Service Credentials_, but you can [add them](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings#adding-users-to-_service-credentials_) if you choose.
+To create a Manager user:
 
-## RabbitMQ users
+```sh
+curl -X POST \
+  https://resource-controller.cloud.ibm.com/v2/resource_keys \
+  -H 'Authorization: Bearer <IAM_token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "<credential-name>",
+    "source": "<instance-crn>",
+    "role": "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+  }'
+```
+{: pre}
+
+To create a Writer user:
+
+```sh
+curl -X POST \
+  https://resource-controller.cloud.ibm.com/v2/resource_keys \
+  -H 'Authorization: Bearer <IAM_token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "<credential-name>",
+    "source": "<instance-crn>",
+    "role": "crn:v1:bluemix:public:iam::::serviceRole:Writer"
+  }'
+```
+{: pre}
+
+Users created through the API have the same permissions as users created through Service Credentials. They do not appear in _Service Credentials_ by default, but you can [add them](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings#adding-users-to-_service-credentials_) if you choose.
+
+## Creating users directly in RabbitMQ
 {: #rabbitmq-user}
 
-Bypass creating users in _Service Credentials_ and create users directly in RabbitMQ. The RabbitMQ Management plug-in UI has a tab for user creation and management available to the admin user on your deployment.
+You can bypass Service Credentials and create users directly in RabbitMQ. The RabbitMQ Management plug-in UI has a tab for user creation and management available to Manager users on your deployment.
 
-Users who are created directly in RabbitMQ do not appear in _Service Credentials_, but you can [add them](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings#adding-users-to-_service-credentials_). These users will not be integrated with IAM controls, even if added to _Service Credentials_.
+To access the user management interface:
+
+1. Log in to the RabbitMQ Management UI with a Manager user
+2. Navigate to the **Admin** tab
+3. Select **Users** to create and manage users
+
+Users created directly in RabbitMQ:
+- Do not appear in _Service Credentials_ by default, but you can [add them](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings#adding-users-to-_service-credentials_)
+- Are not integrated with IAM controls, even if added to _Service Credentials_
+- Must be managed through the RabbitMQ Management UI or API
 
 ## The `ibm` user
 {: #ibm-user}
 
-If you log in to the management UI with your `admin` user, don't create a user with name `ìbm`, as this user is used internally. Creating an ibm account is not advised and can disrupt the availability of your deployment.
+Do not create a user with the name `ibm`, as this user is used internally by the service. Creating an `ibm` user can disrupt the availability of your deployment.
+{: important}
+
+## User permissions and virtual hosts
+{: #user-permissions-vhosts}
+
+RabbitMQ uses a permission model based on virtual hosts (vhosts). Each user can be granted specific permissions on specific vhosts:
+
+- **Configure** - Create and delete queues, exchanges, and bindings
+- **Write** - Publish messages
+- **Read** - Consume messages
+
+Manager users have full permissions on all vhosts. Writer users have full permissions on the default vhost (`/`) only.
+
+To grant additional permissions to users, log in to the RabbitMQ Management UI with a Manager user and use the **Admin** tab to manage user permissions.
+
+For more information about RabbitMQ's access control model, see the [RabbitMQ Access Control documentation](https://www.rabbitmq.com/access-control.html){: external}.

@@ -25,9 +25,12 @@ subcollection: messages-for-rabbitmq-gen2
 ## Gen 2 profile sizes
 {: #gen2-profile-sizes}
 
-Gen 2 offers new profile sizes that are optimized for better performance. Available profiles include various CPU and RAM configurations designed to meet different workload requirements.
+Gen 2 offers two types of profiles optimized for different workload requirements:
 
-**Note**: Shared Compute is not available on Gen 2 VPC. All deployments use Isolated Compute with dedicated resources.
+- **Fixed profiles** - Predefined vCPU and RAM configurations on the newest CPU generation, providing consistent and predictable performance for production workloads.
+- **Flex profiles** - Predefined vCPU and RAM configurations across CPU generations, offering cost-optimized performance for development and testing environments.
+
+All Gen 2 deployments use Isolated Compute with dedicated resources.
 
 ## Resource breakdown
 {: #resources-breakdown}
@@ -105,6 +108,7 @@ In the **Resources** tab, you can view your current resource allocations and hos
 
 For example, with the following command you can view the resource groups for a deployment named "example-deployment".
 
+
 ```sh
 ibmcloud cdb deployment-groups example-deployment
 ```
@@ -133,9 +137,9 @@ Count   3
 |   Adjustable              true
 |
 +   HostFlavor
-|   ID            multitenant
-|   Name
-|   HostingSize
+|   ID            b3c.8x32.encrypted
+|   Name          8x32
+|   HostingSize   s
 |
 +   Disk
 |   Allocation              3072mb
@@ -172,6 +176,7 @@ ibmcloud cdb groups <deployment_id> --json
 
 
 
+
 ## Review current resources and hosting model
 {: #review-resources-api}
 {: api}
@@ -179,6 +184,7 @@ ibmcloud cdb groups <deployment_id> --json
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
 To view the current and scalable resources on a deployment, use the [`/deployments/{id}/groups`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl) endpoint. 
+
 
 
 ## Determine the hosting model of your database
@@ -199,7 +205,30 @@ curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}
 {: #host-flavor-parameter-api}
 {: api}
 
+The `host_flavor` parameter defines your compute sizing. Choose from Fixed profiles for consistent performance or Flex profiles for cost optimization.
+
+#### Fixed profiles
+{: #fixed-profiles-api}
+
+Fixed profiles provide predefined vCPU and RAM configurations on the newest CPU generation for consistent, predictable performance.
+
+| **Host flavor** | **host_flavor value** |
+|:-------------------------:|:---------------------:|
+| 4 CPU x 20 RAM            | `bx3d.4x20.encrypted`    |
+| 8 CPU x 40 RAM            | `bx3d.8x40.encrypted`    |
+| 8 CPU x 80 RAM            | `mx3d.8x80.encrypted`    |
+| 32 CPU x 160 RAM          | `bx3d.32x160.encrypted`  |
+| 48 CPU x 240 RAM          | `bx3d.48x240.encrypted`  |
+{: caption="Fixed profile sizing parameters" caption-side="bottom"}
+{: #fixed_profiles_api_table_scaling}
+
+#### Flex profiles
+{: #flex-profiles-api}
+
+Flex profiles provide predefined vCPU and RAM configurations across CPU generations for cost-optimized performance.
+
 The `host_flavor` parameter defines your compute sizing. 
+
 
 ## Review current resources and hosting model
 {: #review-resources-terraform}

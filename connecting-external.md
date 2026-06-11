@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026,
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: rabbitmq, rabbitmq connecting, connecting to rabbitmq
 
@@ -18,7 +18,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 Your applications and drivers use connection strings to make a connection to {{site.data.keyword.messages-for-rabbitmq_full}}. Your deployment has connection strings specifically for drivers, clients, and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
-The connection strings can be used by any of the credentials you created on your deployment. While you can use the admin user for all of your connections and applications, it might be better to create users specifically for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
+The connection strings can be used by any of the credentials you created on your deployment. You can create Manager users (with full administrative privileges) or Writer users (with limited privileges) for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
 
 ## Connecting with a language's driver
 {: #connecting-lang-driver}
@@ -53,26 +53,6 @@ Here are a few of the common RabbitMQ drivers:
 * [RabbitMQ Java Client Library](http://www.rabbitmq.com/java-client.html)
 * [Bunny RabbitMQ Ruby Client](http://rubybunny.info/)
 * [Pika Python protocol](https://pika.readthedocs.io/en/stable/)
-
-## Connecting with a `STOMP` client
-{: #connecting-stomp-client}
-
-The information a STOMP client needs to make a connection to your deployment is in the `stomp_ssl` section of your connection strings. The table below contains a breakdown for reference.
-
-| Field Name | Index | Description
-| ---------- | ----- | ----------- |
-| `Type` | | Type of connection - for STOMP, it is `stomp` |
-| `Authentication` | `Username` | The username that you use to connect. |
-| `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD` |
-| `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the client. |
-| `Hosts` | `0...` | A hostname and the STOMP-enabled port to connect to, as well as the protocol name "stomp-ssl" |
-| `Composed` | `0...` | A URI combining Authentication, Host, and TLS/SSL |
-| `ssl` | | The TLS/SSL setting needed for a connection. Should always be `true`. |
-| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment |
-| `Certificate` | `Base64` | A base64 encoded version of the certificate. |
-{: caption="RabbitMQ/stomp_ssl connection information" caption-side="top"}
-
-* `0...` indicates that there might be one or more of these entries in an array.
 
 ## Connecting with an `MQTT` client
 {: #connecting-mqtt-client}

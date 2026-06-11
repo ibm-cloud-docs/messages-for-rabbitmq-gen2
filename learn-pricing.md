@@ -18,7 +18,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 A {{site.data.keyword.messages-for-rabbitmq_full}} Gen 2 Standard plan deploys as one highly available RabbitMQ cluster with three data members on the Isolated Compute hosting model. Your data is replicated across members. The Standard plan is priced based on the total amount of disk storage, RAM, dedicated cores, and backup storage that is allocated to deployments, prorated hourly.
 
-Gen 2 uses **new optimized profile sizes** for better performance. All deployments use Isolated Compute with dedicated resources. Shared Compute is not available on Gen 2.
+Gen 2 offers two types of profiles: **Fixed profiles** (newest compute generation, consistent performance) and **Flex profiles** (across CPU generations, cost-optimized). All deployments use Isolated Compute with dedicated resources.
 
 
 
@@ -39,9 +39,10 @@ Users also receive their total disk space purchased, per database, in free backu
 
 On Gen 2, all deployments use Isolated Compute with dedicated CPU cores. . Your deployments are allocated the number of CPUs based on the profile size you select.
 
-Gen 2 offers new optimized profile sizes with various CPU and RAM configurations. 
+Gen 2 offers Fixed and Flex profiles with various CPU and RAM configurations. 
 
-**Note**: Shared Compute is not available on Gen 2. All deployments use Isolated Compute with dedicated resources.
+Shared Compute is not available on Gen 2. All deployments use Isolated Compute with dedicated resources.
+{: note}
 
 ## Scaling per member
 {: #scaling-member}

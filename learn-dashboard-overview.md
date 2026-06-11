@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: deployment, crn, task, gui, api endpoint, dashboard
 
@@ -54,7 +54,9 @@ You can manage your {{site.data.keyword.messages-for-rabbitmq}} service through 
 The resources tab contains information and configuration options on the size and resource usage of your deployment. You can:
 
 - [Scale disk, memory, and CPU](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-resources-scaling)
-- [Configure Autoscaling](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling)
+
+Scaling of disk or compute is not available at MVP for Gen 2, but will be made available soon after launch.
+{: note}
 
 ## Backups
 {: #backups}
@@ -75,8 +77,7 @@ The _Observability_ tab provides access to the {{site.data.keyword.monitoringful
 
 The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can
 - view encryption details. Encryption at rest is enabled for all {{site.data.keyword.messages-for-rabbitmq}} deployments. If you brought your own encryption key from [Key Protect](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect&interface=ui), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
-- [Change the admin password](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management&interface=ui#user-management-set-admin-password-ui)
-- [Implement or modify an IP allowlist](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-allowlisting&interface=ui)
+- [Create users with administrative privileges](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user)
 
 ## Service credentials
 {: #service-credentials}

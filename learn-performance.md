@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026,
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: rabbitmq, databases, memory alarms, disk alarms, monitoring, disk I/O, rabbitmq performance
 
@@ -17,12 +17,15 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messages-for-rabbitmq_full}} deployments can be both manually [scaled to your usage](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-resources-scaling), or configured to [autoscale](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling) under certain resource conditions. When you are tuning the performance of your deployment, consider a few factors.
+{{site.data.keyword.messages-for-rabbitmq_full}} deployments can be manually [scaled to your usage](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-resources-scaling). When you are tuning the performance of your deployment, consider a few factors.
+
+Scaling of disk or compute is not available at MVP for Gen 2, but will be made available soon after launch.
+{: note}
 
 ## Monitoring your deployment
 {: #monitoring-deployment}
 
-{{site.data.keyword.messages-for-rabbitmq}} deployments offer an integration with the [{{site.data.keyword.monitoringfull}} service](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring) for basic monitoring of resource usage on your deployment. Many of the available metrics, like disk usage and IOPS, are presented to help you configure [autoscaling](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-autoscaling) on your deployment. Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion.
+{{site.data.keyword.messages-for-rabbitmq}} deployments offer an integration with the [{{site.data.keyword.monitoringfull}} service](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring) for basic monitoring of resource usage on your deployment. Observing trends in your usage can help you plan for scaling when it becomes available and help alleviate performance problems before your databases become unstable due to resource exhaustion.
 
 ## RabbitMQ memory usage
 {: #rabbitmq-mem-usage}
@@ -49,7 +52,7 @@ More information about memory alarms can be found in the [RabbitMQ documentation
 ## Disk IOPS
 {: #disk-iops}
 
-The number of input/output operations per second (IOPS) is limited by the type of storage volume that is being used. Storage volumes for {{site.data.keyword.messages-for-rabbitmq}} deployments are provisioned on [Block Storage Endurance Volumes in the 10 IOPS per GB tier](/docs/BlockStorage?topic=BlockStorage-orderingBlockStorage&interface=ui). IOPS limits can affect RabbitMQ message throughput and storage operations. Reaching these limits can cause disk to fall behind on reclaiming space after messages are consumed, leading to disk alarms and publisher throttling until activity slows down. You can increase the number IOPS available to your deployment by increasing disk space.
+The number of input/output operations per second (IOPS) is limited by the type of storage volume that is being used. Storage volumes for {{site.data.keyword.messages-for-rabbitmq}} deployments are provisioned on [Block Storage Endurance Volumes in the 5 IOPS per GB tier](/docs/BlockStorage?topic=BlockStorage-orderingBlockStorage&interface=ui). IOPS limits can affect RabbitMQ message throughput and storage operations. Reaching these limits can cause disk to fall behind on reclaiming space after messages are consumed, leading to disk alarms and publisher throttling until activity slows down. You can increase the number IOPS available to your deployment by increasing disk space.
 
 ## Quorum queues
 {: #quorum-queues}

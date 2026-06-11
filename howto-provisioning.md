@@ -45,7 +45,12 @@ For more information, see [Isolated Compute](/docs/cloud-databases-gen2?topic=cl
 {: #resource_allocation}
 {: ui}
 
-Gen 2 offers new profile sizes that are optimized for better performance. Use the table to choose the machine size (CPU and RAM configuration) for each member of your deployment, and specify the disk size.
+Gen 2 offers two types of profiles optimized for different workload requirements:
+
+- **Fixed profiles** - Predefined vCPU and RAM configurations on the newest CPU generation, providing consistent and predictable performance for production workloads.
+- **Flex profiles** - Predefined vCPU and RAM configurations across CPU generations, offering cost-optimized performance for development and testing environments.
+
+Use the tables below to choose the appropriate profile for your deployment, and specify the disk size.
 
 Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 {: note}
@@ -269,6 +274,61 @@ Follow these steps to provision using the [Resource Controller API](https://clou
       "capability": {
         "flavors": [
           {
+            "id": "bx3d.4x20.encrypted",
+            "name": "4x20",
+            "cpu": {
+              "allocation_count": 4
+            },
+            "memory": {
+              "allocation_mb": 20480
+            },
+            "hosting_size": "xs"
+          },
+          {
+            "id": "bx3d.8x40.encrypted",
+            "name": "8x40",
+            "cpu": {
+              "allocation_count": 8
+            },
+            "memory": {
+              "allocation_mb": 40960
+            },
+            "hosting_size": "s"
+          },
+          {
+            "id": "mx3d.8x80.encrypted",
+            "name": "8x80",
+            "cpu": {
+              "allocation_count": 8
+            },
+            "memory": {
+              "allocation_mb": 81920
+            },
+            "hosting_size": "s+"
+          },
+          {
+            "id": "bx3d.32x160.encrypted",
+            "name": "32x160",
+            "cpu": {
+              "allocation_count": 32
+            },
+            "memory": {
+              "allocation_mb": 163840
+            },
+            "hosting_size": "l"
+          },
+          {
+            "id": "bx3d.48x240.encrypted",
+            "name": "48x240",
+            "cpu": {
+              "allocation_count": 48
+            },
+            "memory": {
+              "allocation_mb": 245760
+            },
+            "hosting_size": "xl"
+          },
+          {
             "id": "b3c.4x16.encrypted",
             "name": "4x16",
             "cpu": {
@@ -289,17 +349,6 @@ Follow these steps to provision using the [Resource Controller API](https://clou
               "allocation_mb": 32768
             },
             "hosting_size": "s"
-          },
-          {
-            "id": "m3c.8x64.encrypted",
-            "name": "8x64",
-            "cpu": {
-              "allocation_count": 8
-            },
-            "memory": {
-              "allocation_mb": 65536
-            },
-            "hosting_size": "s+"
           },
           {
             "id": "b3c.16x64.encrypted",
@@ -324,13 +373,13 @@ Follow these steps to provision using the [Resource Controller API](https://clou
             "hosting_size": "l"
           },
           {
-            "id": "m3c.30x240.encrypted",
-            "name": "30x240",
+            "id": "b3c.48x192.encrypted",
+            "name": "48x192",
             "cpu": {
-              "allocation_count": 30
+              "allocation_count": 48
             },
             "memory": {
-              "allocation_mb": 245760
+              "allocation_mb": 196608
             },
             "hosting_size": "xl"
           }
@@ -474,11 +523,12 @@ Before executing a Terraform script on an existing instance, use the `terraform 
 
 Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) supports provisioning {{site.data.keyword.databases-for}} deployments. Alternatively, you can use Terraform IBM Modules to manage your infrastructure through [Terraform IBM Modules for {{site.data.keyword.databases-for-rabbitmq}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
 
-Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later.
+Select the profile type you want your database to be provisioned with. Gen 2 offers Fixed profiles (newest CPU generation, consistent performance) and Flex profiles (across CPU generations, cost-optimized).
 
 
 
-Provision a {{site.data.keyword.messages-for-rabbitmq}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+
+**Example: Provisioning with a Fixed profile**
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -492,11 +542,11 @@ resource "ibm_database" "<your_database>" {
   resource_group_id = data.ibm_resource_group.group.id
   service_endpoints = "private"
   tags              = ["tag1", "tag2"]
-  adminpassword                = "password12"
+  adminpassword     = "password12"
   group {
     group_id = "member"
     host_flavor {
-      id = "b3c.8x32.encrypted"
+      id = "bx3d.8x40.encrypted"
     }
     disk {
       allocation_mb = 256000
@@ -506,12 +556,8 @@ resource "ibm_database" "<your_database>" {
     name     = "user123"
     password = "password12"
   }
-  allowlist {
-    address     = "172.168.1.1/32"
-    description = "desc"
-  }
 }
-output "ICD Etcd database connection string" {
+output "ICD RabbitMQ database connection string" {
   value = "http://${ibm_database.test_acc.ibm_database_connection.icd_conn}"
 }
 ```
@@ -521,18 +567,35 @@ output "ICD Etcd database connection string" {
 {: #host-flavor-parameter-terraform}
 {: terraform}
 
-The `host_flavor` parameter defines your Compute sizing. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
+The `host_flavor` parameter defines your compute sizing. Choose from Fixed profiles for consistent performance or Flex profiles for cost optimization.
+
+#### Fixed profiles
+{: #fixed-profiles-terraform}
+
+Fixed profiles provide predefined vCPU and RAM configurations on the newest CPU generation for consistent, predictable performance.
+
+| **Host flavor** | **host_flavor value** |
+|:-------------------------:|:---------------------:|
+| 4 CPU x 20 RAM            | `bx3d.4x20.encrypted`    |
+| 8 CPU x 40 RAM            | `bx3d.8x40.encrypted`    |
+| 32 CPU x 160 RAM          | `bx3d.32x160.encrypted`  |
+| 48 CPU x 240 RAM          | `bx3d.48x240.encrypted`  |
+{: caption="Fixed profile sizing parameters" caption-side="bottom"}
+
+#### Flex profiles
+{: #flex-profiles-terraform}
+
+Flex profiles provide predefined vCPU and RAM configurations across CPU generations for cost-optimized performance. The `host_flavor` parameter defines your Compute sizing.
 
 | **Host flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
 
 | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
 | 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
 | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
 | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Host Flavor sizing parameter" caption-side="bottom"}
+| 48 CPU x 192 RAM          | `b3c.48x192.encrypted`  |
+{: caption="Flex profile sizing parameters" caption-side="bottom"}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-11"
 
 keywords: rabbitmq, rabbitmq management
 
@@ -31,7 +31,7 @@ Since {{site.data.keyword.messages-for-rabbitmq}} deployments are signed with a 
 
 You are next asked to enter your username and password. After you have signed in, you can see an _Overview_ of your RabbitMQ deployment.
 
-Use any user on your deployment to access the UI. Some features are only available to the admin user provisioned with your deployment.
+Use any user on your deployment to access the UI. Some features are only available to Manager users.
 {: .tip}
 
 For more information, see the [RabbitMQ Management plug-in](https://www.rabbitmq.com/management.html){: .external} page.
@@ -52,7 +52,7 @@ Public endpoints are not available on Gen 2.
 The Management plug-in also provides an [API](https://www.rabbitmq.com/management.html#http-api) for your RabbitMQ deployment. The base endpoint the same HTTP URL as the browser URL with `/api`. For example,
 `https://1a619c43-6425-4abb-8df0-0c7b1b3a3001.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:31797/api/`
 
-The API uses `application/json` data and requires basic authentication. You can use any user that you created on your deployment to access the UI. However, some features might be available only to the admin user.
+The API uses `application/json` data and requires basic authentication. You can use any user that you created on your deployment to access the API. However, some features might be available only to Manager users.
 
 Documentation and examples are provided with your deployment at the browser URL with `/api/index.html`. For example,
 `https://1a619c43-6425-4abb-8df0-0c7b1b3a3001.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:31797/api/index.html`
