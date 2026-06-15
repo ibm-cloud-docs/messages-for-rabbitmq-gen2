@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026,
-lastupdated: "2026-06-11"
+  years: 2026
+lastupdated: "2026-06-15"
 
 keywords: rabbitmq, rabbitmq users
 
@@ -19,7 +19,7 @@ subcollection: messages-for-rabbitmq-gen2
 {{site.data.keyword.messages-for-rabbitmq_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/access-control.html#permissions){: external}.
 {: shortdesc}
 
-{{site.data.keyword.messages-for-rabbitmq}} Gen 2 instances do not include a default admin user. Instead, you create users with the `Manager` or `Writer` role using the {{site.data.keyword.cloud_notm}} service credential interface — via UI, CLI, or API. You can also create users directly in RabbitMQ through the Management UI.
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 instances **do not** include a default **admin** user, such as Gen 1 instances. Instead, you create users with the `Manager` or `Writer` role using the {{site.data.keyword.cloud_notm}} Service Credential interface — via UI, CLI, or API. You can also create users directly in RabbitMQ through the Management UI.
 
 Since {{site.data.keyword.messages-for-rabbitmq}} comes with the RabbitMQ Management plug-in enabled, user access is also controlled by [user tags](https://www.rabbitmq.com/management.html#permissions){: external}. These tags control what information is available to users through the management UI, `rabbitmqadmin`, and the RabbitMQ HTTP API.
 
@@ -41,7 +41,7 @@ For instructions on creating Manager users, see [Creating users with administrat
 ## Writer users
 {: #writer-users}
 
-Users created with the `Writer` role have more limited privileges:
+Users created with the `Writer` role have the following limited privileges:
 
 - Full permissions (configure, write, and read) on the default virtual host
 - Tagged with the "monitoring" tag, allowing access to the management plug-in
@@ -50,10 +50,13 @@ Users created with the `Writer` role have more limited privileges:
 
 Writer users cannot create new virtual hosts or manage other users' permissions.
 
-## Creating users through Service Credentials
+## Creating users through the Service Credentials UI
 {: #service-cred-user}
+{: ui}
 
 You can create users through the _Service Credentials_ panel in the {{site.data.keyword.cloud_notm}} console. For detailed instructions, see [Creating users and getting connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
+
+Open the instance from the *Resource List*, and go to *Service Credentials* tab. Click on **Create credential**.
 
 When creating a service credential, you can select either:
 - **Manager** role - Creates a user with full administrative privileges

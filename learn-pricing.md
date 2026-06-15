@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-15"
 
 keywords: rabbitmq, databases, pricing, resources, scaling, rabbitmq pricing
 
@@ -37,7 +37,7 @@ Users also receive their total disk space purchased, per database, in free backu
 ## Dedicated cores pricing
 {: #cores-pricing}
 
-On Gen 2, all deployments use Isolated Compute with dedicated CPU cores. . Your deployments are allocated the number of CPUs based on the profile size you select.
+On Gen 2, all deployments use isolated compute with dedicated CPU cores.  The number of CPUs that are allocated to your deployment depends on the profile size that you select.
 
 Gen 2 offers Fixed and Flex profiles with various CPU and RAM configurations. 
 

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026,
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-15"
 
 keyowrds: rabbitmq, shovel
 
@@ -26,7 +26,7 @@ Before you configure Shovel, make sure that you create a user with `admin` permi
 ## Configuring RabbitMQ Shovel
 {: #rabbitmq-shovel-config}
 
-Create your Shovel on the destination formation. In RabbitMQ versions 3.12 and newer, it is mandatory to add `verify_none` in the source and destination URI, as detailed in the configuration procedure.
+Create your Shovel on the destination formation as detailed in the configuration procedure. In RabbitMQ versions 3.12 and newer, it is mandatory to add `verify_none` in the source and destination URI.
 
 Follow these steps to configure RabbitMQ Shovel:
 

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-15"
 
 keywords: rabbitmq, databases, rabbitmq connection strings
 
@@ -18,9 +18,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 To connect to {{site.data.keyword.messages-for-rabbitmq_full}}, you need some users and some connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ panel.
 
-![Endpoints panel](images/getting-started-endpoints-panel.png){: caption="Endpoints panel" caption-side="bottom"}
 
-You can also grab connection strings from the [CLI](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections) and the [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#getconnection).
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 deployments do not include a default admin user. You must [create a Manager or Writer user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user) through Service Credentials to connect to your deployment.
 {: .tip}
