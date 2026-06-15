@@ -50,7 +50,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 : - Fixed profiles (newest CPU generation, consistent performance) and Flex profiles (across CPU generations, cost-optimized)
   - All deployments use isolated compute with dedicated resources
 
-**Version Management**
+**Version management**
 : - Gen 2 lists only major version series (for example, v4)
   - Minor and patch versions are automatically managed by {{site.data.keyword.cloud}}
   - This enables customers to run workloads on a major version for longer periods
