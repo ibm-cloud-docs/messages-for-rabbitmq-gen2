@@ -55,8 +55,8 @@ toc:
           label: Managing backups
           topics:
           - learn-rabbitmq-backups.md
-          - include: ../cloud-databases-gen2/howto-manage-backups.md
           - include: ../cloud-databases-gen2/backup-restore.md
+          - include: ../cloud-databases-gen2/coupled-backups.md
       - topicgroup:
           label: Observability
           topics:
