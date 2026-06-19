@@ -35,6 +35,12 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
+      - topicgroup:
+          label: Managing backups
+          topics:
+          - learn-rabbitmq-backups.md
+          - include: ../cloud-databases-gen2/backup-restore.md
+          - include: ../cloud-databases-gen2/coupled-backups.md
       - howto-user-management.md
       - include: ../cloud-databases-gen2/ha-dr.md
       - howto-getting-connection-strings.md
@@ -51,12 +57,6 @@ toc:
       - howto-plugins.md
       - howto-upgrading.md
       - howto-shovel.md
-      - topicgroup:
-          label: Managing backups
-          topics:
-          - learn-rabbitmq-backups.md
-          - include: ../cloud-databases-gen2/backup-restore.md
-          - include: ../cloud-databases-gen2/coupled-backups.md
       - topicgroup:
           label: Observability
           topics:
