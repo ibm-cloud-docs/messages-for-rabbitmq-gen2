@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-15"
+lastupdated: "2026-06-22"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -22,8 +22,8 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.messages-for-rabbitmq_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
-## 24 June 2026
-{: #messages-for-rabbitmq-gen2-19may2026}
+## 25 June 2026
+{: #messages-for-rabbitmq-gen2-25jun2026}
 {: release-note}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 is now generally available (GA)
@@ -57,6 +57,6 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
   - {{site.data.keyword.ibm}} ensures seamless minor and patch version upgrades
 
 **Scaling**
-: - Scaling of disk or compute is not available at MVP
+: - Scaling of disk or compute is not available at GA
   - Scaling capabilities will be made available soon after launch
-  - Version upgrades will be made available immediately after MVP
+  - Version upgrades will be made available immediately after GA
