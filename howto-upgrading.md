@@ -38,7 +38,7 @@ Find the available major versions of RabbitMQ on the [{{site.data.keyword.messag
 
 When a major version of a database is at its end of life (EOL), upgrade to a current major version.
 
-Upgrade your new deployment by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups) of your data into the new version. Restoring from a backup has a number of advantages:
+Upgrade your new deployment by [restoring a backup](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-dashboard-backups&interface=ui#restore-backup) of your data into the new version. Restoring from a backup has a number of advantages:
 
 - The original deployment continues running and production work can be uninterrupted.
 - You can test the new database out of production and act on any application incompatibilities.
@@ -110,16 +110,6 @@ curl -X POST \
 
 You can use a shovel to move messages from a current cluster to a new cluster during a RabbitMQ version upgrade. For more information, see [RabbitMQ Shovel](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-shovel){: external}.
 
-
-## Upgrading from v3.13 to v4
-{: #upgrading-v313-to-v4}
-
-There are major changes between v3.x and v4.x. To upgrade your {{site.data.keyword.messages-for-rabbitmq}} instance from v3.13 to v4, complete the following extra step with [the Manager user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management#manager-users) provisioned with your deployment that deletes the high availability related policies. Finally, complete Backup-Restore.
-
-Starting from v4, {{site.data.keyword.messages-for-rabbitmq}} does not support high availability of Classic Queues. Therefore, when you try to import definitions from v3.13 to v4, the restore fails because the definitions contain Classic Queue high availability related policies that are not recognized by the policy setting.
-
-To avoid this error and to upgrade successfully, complete the following steps as the `admin` user.
-
 ### Upgrade using the UI
 {: #upgrade-ui-v313-to-v4}
 {: ui}
@@ -162,4 +152,4 @@ curl --cacert /path/to/cacert -u admin_username:password_of_admin_user -X DELETE
 ## Troubleshooting
 {: #upgrading-ts}
 
-If you encounter errors while importing definitions during an upgrade {{site.data.keyword.messages-for-rabbitmq}} , see [Why can't I import definitions from Messages for RabbitMQ version 3.9 to version 3.11?](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-troubleshoot-defs){: external}.
+If you encounter errors while importing definitions during an upgrade {{site.data.keyword.messages-for-rabbitmq}} , see [Why can't I import definitions between Messages for RabbitMQ versions?](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-troubleshoot-defs){: external}.
