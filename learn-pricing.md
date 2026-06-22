@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-15"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, databases, pricing, resources, scaling, rabbitmq pricing
 
@@ -16,7 +16,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-A {{site.data.keyword.messages-for-rabbitmq_full}} Gen 2 Standard plan deploys as one highly available RabbitMQ cluster with three data members on the Isolated Compute hosting model. Your data is replicated across members. The Standard plan is priced based on the total amount of disk storage, RAM, dedicated cores, and backup storage that is allocated to deployments, prorated hourly.
+A {{site.data.keyword.messages-for-rabbitmq_full}} Gen 2 Standard plan deploys as one highly available RabbitMQ cluster with three data members on the Isolated Compute hosting model. The Standard plan is priced based on the total amount of disk storage, RAM, dedicated cores, and backup storage that is allocated to deployments, prorated hourly.
 
 Gen 2 offers two types of profiles: **Fixed profiles** (newest compute generation, consistent performance) and **Flex profiles** (across CPU generations, cost-optimized). All deployments use Isolated Compute with dedicated resources.
 
@@ -32,7 +32,7 @@ For pricing estimation, use the **Add to estimate** button at the bottom of the 
 ## Backups pricing
 {: #backups-pricing}
 
-Users also receive their total disk space purchased, per database, in free backup storage. For example, in a month, if you have a {{site.data.keyword.messages-for-rabbitmq}} deployment that has provisioned 10 GB of disk per member, which has three data members, you receive 30 GB of backup storage free for that month. If your backup storage utilization is greater than 3 GB for the month in this scenario, each gigabyte is charged at an overage $0.095/month. 
+Users also receive their total disk space purchased, per database, in free backup storage. For example, in a month, if you have a {{site.data.keyword.messages-for-rabbitmq}} deployment that has provisioned 10 GB of disk per member, which has three data members, you receive 30 GB of backup storage free for that month. If your backup storage utilization is greater than 30 GB for the month in this scenario, each gigabyte is charged at an overage $0.095/month. 
 
 ## Dedicated cores pricing
 {: #cores-pricing}
