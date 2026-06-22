@@ -75,7 +75,6 @@ toc:
           - include: ../cloud-databases-gen2/howto-vpes.md
           - include: ../cloud-databases-gen2/reference-iam.md
           - include: ../cloud-databases-gen2/reference-key-protect.md
-          - include: ../cloud-databases-gen2/reference-hpcs.md
           - include: ../cloud-databases-gen2/howto-deprovisioning.md
   - navgroup:
       id: reference
