@@ -17,7 +17,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-**Important**: Scaling of disk or compute (CPU and RAM) is **not available at MVP** for {{site.data.keyword.messages-for-rabbitmq}} Gen 2. Scaling capabilities will be made available soon after the initial launch.
+**Important**: Scaling of disk or compute (CPU and RAM) is **not available at GA** for {{site.data.keyword.messages-for-rabbitmq}} Gen 2. Scaling capabilities will be made available soon after the initial launch.
 {: important}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 uses the [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute) hosting model exclusively. When scaling becomes available, you will be able to adjust resources by selecting different profile sizes.
@@ -88,7 +88,7 @@ If you find that your database workloads need more CPU resources, you can scale 
 
 - Scaling operations are logged in [{{site.data.keyword.atracker_full}}](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-at_events).
 
-- **Scaling is not available at MVP** but will be made available soon after launch.
+- **Scaling is not available at GA** but will be made available soon after launch.
 - Autoscaling is not available in Gen 2. Monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring).
 - When scaling becomes available, you will be able to scale manually as needed.
 
@@ -98,7 +98,7 @@ If you find that your database workloads need more CPU resources, you can scale 
 
 In the **Resources** tab, you can view your current resource allocations and hosting model. Gen 2 uses Isolated Compute exclusively.
 
-**Note**: Scaling functionality in the UI will be available soon after MVP launch.
+**Note**: Scaling functionality in the UI will be available soon after GA launch.
 
 ## Review current resources and hosting model
 {: #review-resources-cli}
