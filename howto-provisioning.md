@@ -63,7 +63,7 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: ui}
 
 - **Database Version** - [Set only at deployment]{: tag-red} On Gen 2, you select the major version (e.g., v4). IBM Cloud automatically manages minor and patch versions to ensure security and stability. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-- **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
+- **Encryption** - If you use [Key Protect](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
 - **Endpoints** - [Set only at deployment]{: tag-red} Gen 2 supports **private endpoints only**. Public endpoints are not available on Gen 2 VPC.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
