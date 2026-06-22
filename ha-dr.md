@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026,
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: HA for rabbitmq, DR for rabbitmq, rabbitmq recovery time objective, rabbitmq recovery point objective
 
@@ -79,7 +79,7 @@ The DR steps must be practiced regularly. As you build your plan, consider the f
 ### Connection limits
 {: #connection-limits}
 
-It is important to prevent overwhelming your deployment with connections. If the number of connections to the database exceeds the connection limit, new connections fail and return an error. For more information {{site.data.keyword.messages-for-rabbitmq}}, see [Connection limits](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-ha-dr#connection-limits).
+It is important to prevent overwhelming your deployment with connections. If the number of connections to the database exceeds the connection limit, new connections fail and return an error.
 
 ## Your responsibilities for HA and DR
 {: #feature-responsibilities}
