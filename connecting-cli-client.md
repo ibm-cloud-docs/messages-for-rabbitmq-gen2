@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, rabbitmq management
 
@@ -27,19 +27,19 @@ From _Connections_ in your deployment's _Dashboard Overview_, open RabbitMQ Mana
 
 The URL connection information is also in the "https" section of your [connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings). The web address for your RabbitMQ deployment is in the "composed" field of your connection strings.
 
-Since {{site.data.keyword.messages-for-rabbitmq}} deployments are signed with a service proprietary certificate, you might encounter a security warning when you first try to open the page. You can configure your system to trust the [provided service proprietary certificate](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-external-app#tls-and-service-proprietary-certificate-support). Review your browser's or your system's documentation on how to do this.
+Since {{site.data.keyword.messages-for-rabbitmq}} deployments are signed with a service proprietary certificate, you might encounter a security warning when you first try to open the page. You can configure your system to trust the [provided service proprietary certificate](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-external-app#tls-cert-support). Review your browser's or your system's documentation on how to do this.
 
 You are next asked to enter your username and password. After you have signed in, you can see an _Overview_ of your RabbitMQ deployment.
 
 Use any user on your deployment to access the UI. Some features are only available to Manager users.
 {: .tip}
 
-For more information, see the [RabbitMQ Management plug-in](https://www.rabbitmq.com/management.html){: .external} page.
+For more information, see the [RabbitMQ Management plug-in](https://www.rabbitmq.com/docs/management){: external} page.
 
 ### Connecting through private endpoints
 {: #rabbitmq-private-endpoints}
 
-{{site.data.keyword.messages-for-rabbitmq}} Gen 2 supports **private endpoints only**. To access the Management UI from a browser, you must be on the private network or configure VPC access. Follow the steps in the [Connecting through private endpoints](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-service-endpoints&interface=ui#private-endpoint-connections) documentation for {{site.data.keyword.databases-for}}.
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 supports **private endpoints only**. To access the Management UI from a browser, you must be on the private network or configure VPC access. For information on private endpoints, see the service endpoints documentation.
 
 After you have configured your environment for private endpoint access, you can navigate to the {{site.data.keyword.messages-for-rabbitmq}} management endpoint URL from your browser. For example, `https://bfdb-4263-8ad2-c9a4beaf4591.8f7bfc8f3faa4218afd56e0.databases.appdomain.cloud:323232`
 
@@ -49,7 +49,7 @@ Public endpoints are not available on Gen 2.
 ## RabbitMQ Management HTTP API
 {: #rabbitmq-management-http-api}
 
-The Management plug-in also provides an [API](https://www.rabbitmq.com/management.html#http-api) for your RabbitMQ deployment. The base endpoint the same HTTP URL as the browser URL with `/api`. For example,
+The Management plug-in also provides an [API](https://www.rabbitmq.com/docs/management#http-api){: external} for your RabbitMQ deployment. The base endpoint the same HTTP URL as the browser URL with `/api`. For example,
 `https://1a619c43-6425-4abb-8df0-0c7b1b3a3001.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:31797/api/`
 
 The API uses `application/json` data and requires basic authentication. You can use any user that you created on your deployment to access the API. However, some features might be available only to Manager users.
@@ -98,7 +98,7 @@ rabbitmqadmin --username=admin --password=$PASSWORD --ssl --ssl-ca-cert-file=0b2
 * `--port=` - The parameter that specifies the port the RabbitMQ server is listening on.
 * `list exchanges` - A `rabbitmqadmin` command to list the database members of the RabbitMQ deployment.
 
-Documentation and other examples for `rabbitmqadmin` are on the RabbitMQ [Management Command-Line Tool](https://www.rabbitmq.com/management-cli.html){: .external} page.
+Documentation and other examples for `rabbitmqadmin` are on the RabbitMQ [Management Command-Line Tool](https://www.rabbitmq.com/docs/management-cli){: external} page.
 
 ## Using the service proprietary certificate
 {: #rabbitmq-service-proprietary-cert}

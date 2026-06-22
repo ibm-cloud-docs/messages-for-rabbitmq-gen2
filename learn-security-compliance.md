@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, databases, soc, hipaa, gdpr, terms, rabbitmq security compliance, pci dss
 
@@ -73,10 +73,10 @@ Customers are responsible for the storing, processing, and transmission of their
 
 It is the customer’s responsibility to familiarize themselves with these processes and to manage data retention and removal from the service according to the customer’s policies.
 
-A full list of PCI DSS-ready {{site.data.keyword.cloud_notm}} Platform services, and options to request a PCI DSS AOC and SRM guide, can be found at the [{{site.data.keyword.cloud_notm}} compliance page](https://www.ibm.com/cloud/compliance/industry).
+A full list of PCI DSS-ready {{site.data.keyword.cloud_notm}} Platform services, and options to request a PCI DSS AOC and SRM guide, can be found at the [{{site.data.keyword.cloud_notm}} compliance page](https://www.ibm.com/products){: external}.
 
 ## Terms
 {: #terms}
 
-- [The IBM Privacy Policy](https://www.ibm.com/privacy/us/en/)
-- [The {{site.data.keyword.cloud_notm}} Notices and Terms of Use](/docs/overview/terms-of-use?topic=overview-terms)
+- [The IBM Privacy Policy](https://www.ibm.com/us-en/privacy){: external}
+- [The {{site.data.keyword.cloud_notm}} Notices and Terms of Use](/docs/overview?topic=overview-terms)

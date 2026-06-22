@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keyowrds: rabbitmq, upgrading, major versions, changing versions, rabbitmq upgrading, new deployment, major version
 
@@ -31,7 +31,7 @@ When you provision or upgrade a deployment on Gen 2, you select the major versio
 Version upgrades will be made available immediately after the Gen 2 MVP launch.
 {: note}
 
-Find the available major versions of RabbitMQ on the [{{site.data.keyword.messages-for-rabbitmq_full}} catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create?catalog_query){: external} page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or through the {{site.data.keyword.databases-for}} API [`/deployables` endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases).
+Find the available major versions of RabbitMQ on the [{{site.data.keyword.messages-for-rabbitmq_full}} catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create?catalog_query){: external} page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference), or through the {{site.data.keyword.databases-for}} API [`/deployables` endpoint](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api).
 
 ## Upgrading major versions
 {: #upgrading-major-versions}
@@ -114,7 +114,7 @@ You can use a shovel to move messages from a current cluster to a new cluster du
 ## Upgrading from v3.13 to v4
 {: #upgrading-v313-to-v4}
 
-There are [major changes](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes&interface=ui#messages-for-rabbitmq-gen2-18mar2025) between v3.x and v4.x. To upgrade your {{site.data.keyword.messages-for-rabbitmq}} instance from v3.13 to v4, complete the following extra step with [the admin user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management&interface=ui#admin-user) provisioned with your deployment that deletes the high availability related policies. Finally, complete Backup-Restore.
+There are major changes between v3.x and v4.x. To upgrade your {{site.data.keyword.messages-for-rabbitmq}} instance from v3.13 to v4, complete the following extra step with [the Manager user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management#manager-users) provisioned with your deployment that deletes the high availability related policies. Finally, complete Backup-Restore.
 
 Starting from v4, {{site.data.keyword.messages-for-rabbitmq}} does not support high availability of Classic Queues. Therefore, when you try to import definitions from v3.13 to v4, the restore fails because the definitions contain Classic Queue high availability related policies that are not recognized by the policy setting.
 
@@ -127,8 +127,8 @@ To avoid this error and to upgrade successfully, complete the following steps as
 1. Log in to the UI of the v3.13 instance.
 2. Navigate to the **Policies** side panel in the *Admin* tab.
 3. Delete the **ha-all** policy in *Policies* tab.
-4. After deleting the policy, take an on-demand backup of this instance from either the {{site.data.keyword.cloud_notm}} [UI](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#ondemand-backup), [API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#startondemandbackup), or [CLI](https://cloud.ibm.com/docs/cli?topic=cli-cdb-reference#deployment-backup-now).
-5. After successfully creating a backup, restore this particular backup to the v4 instance by completing the steps in [Restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup).
+4. After deleting the policy, take an on-demand backup of this instance from either the {{site.data.keyword.cloud_notm}} [UI](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#ondemand-backup), [API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api), or [CLI](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference).
+5. After successfully creating a backup, restore this particular backup to the v4 instance by completing the steps in [Restoring a backup](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-dashboard-backups&interface=ui#restore-backup).
 
 ### Upgrade using the CLI
 {: #upgrade-cli-v313-to-v4}
@@ -142,8 +142,8 @@ rabbitmqadmin --username=admin_username --password=password_of_admin_user --use-
 ```
 {: pre}
 
-4. After deleting the policy, take an on-demand backup of this instance from either the {{site.data.keyword.cloud_notm}} [UI](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#ondemand-backup), [API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#startondemandbackup), or [CLI](https://cloud.ibm.com/docs/cli?topic=cli-cdb-reference#deployment-backup-now).
-5. After successfully creating a backup, restore this particular backup to the v4 instance by completing [these steps](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup).
+4. After deleting the policy, take an on-demand backup of this instance from either the {{site.data.keyword.cloud_notm}} [UI](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#ondemand-backup), [API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api), or [CLI](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference).
+5. After successfully creating a backup, restore this particular backup to the v4 instance by completing [these steps](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-dashboard-backups&interface=ui#restore-backup).
 
 ### Upgrade using the API
 {: #upgrade-api-v313-to-v4}
@@ -156,8 +156,8 @@ curl --cacert /path/to/cacert -u admin_username:password_of_admin_user -X DELETE
 ```
 {: pre}
 
-3. After deleting the policy, take an on-demand backup of this instance from either the {{site.data.keyword.cloud_notm}} [UI](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#ondemand-backup), [API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#startondemandbackup), or [CLI](https://cloud.ibm.com/docs/cli?topic=cli-cdb-reference#deployment-backup-now).
-4. After successfully creating a backup, restore this particular backup to the v4 instance by completing the steps at [Restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=api#restore-backup).
+3. After deleting the policy, take an on-demand backup of this instance from either the {{site.data.keyword.cloud_notm}} [UI](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#ondemand-backup), [API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api), or [CLI](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference).
+4. After successfully creating a backup, restore this particular backup to the v4 instance by completing the steps at [Restoring a backup](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-dashboard-backups&interface=ui#restore-backup.
 
 ## Troubleshooting
 {: #upgrading-ts}

@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, rabbitmq getting started
 
@@ -22,7 +22,7 @@ completion-time: 30m
 
 [Gen 2]{: tag-purple}
 
-This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/rabbitmq){: .external} to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.messages-for-rabbitmq_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
+This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-examples/tree/node/rabbitmq){: external} to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.messages-for-rabbitmq_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
 {: shortdesc}
 
 ## Gen 2 platform highlights
@@ -42,9 +42,8 @@ If you have already created your deployment and want to connect to your RabbitMQ
 ## Before you begin
 {: #before-you-begin}
 
-- You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: .external}.
-- Install [Node.js](https://nodejs.org/){: .external} and [Git](https://git-scm.com/downloads){: .external}.
-- See [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices) for guidance on setting up a basic {{site.data.keyword.messages-for-rabbitmq_full}} deployment.
+- You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}.
+- Install [Node.js](https://nodejs.org/){: external} and [Git](https://git-scm.com/downloads){: external}.
 
 ## Create a {{site.data.keyword.messages-for-rabbitmq}} service instance
 {: #create-service-instance}
@@ -102,7 +101,8 @@ ibmcloud login
 ```
 {: .pre}
 
-If you have a federated user ID, use the `ibmcloud login --sso` command to log in with your single sign-on ID. See [Logging in with a federated ID](/docs/cli/login_federated_id.html#federated_id) to learn more.{: .tip}
+If you have a federated user ID, use the `ibmcloud login --sso` command to log in with your single sign-on ID. See [Logging in with a federated ID](/docs/cli?topic=cli-federated_id) to learn more.
+{: .tip}
 
 Make sure that you are targeting the correct {{site.data.keyword.cloud_notm}} org and space.
 
@@ -117,7 +117,7 @@ By using the same values that you used when creating the service, choose from th
 {: #create-cloudfoundry-alias}
 {: step}
 
-{{site.data.keyword.ibmcf_full}} is deprecated. As of 30 November 2022 new {{site.data.keyword.ibmcf_full}} applications cannot be created and only existing users will be able to deploy applications. End-of-support happens on 1 June 2023. Any instances that still exist on 1 June 2023 will be deleted. For more information, see [Deprecation of IBM Cloud Foundry](/docs/cloud-foundry-public?topic=cloud-foundry-public-deprecation).
+{{site.data.keyword.ibmcf_full}} is deprecated. As of 30 November 2022 new {{site.data.keyword.ibmcf_full}} applications cannot be created and only existing users will be able to deploy applications. End-of-support happens on 1 June 2023. Any instances that still exist on 1 June 2023 will be deleted. For more information, see [Deprecation of IBM Cloud Foundry](/docs/cloud-foundry?topic=cloud-foundry-deprecation).
 {: deprecated}
 
 Make the database service discoverable by {{site.data.keyword.ibmcf_full}} applications by giving it a {{site.data.keyword.ibmcf_full}} alias.
@@ -152,7 +152,7 @@ Change the `route` value to something unique. The route that you choose determin
 
 Change the `name` value. The name that you choose is displayed in your {{site.data.keyword.cloud_notm}} dashboard.
 
-Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-alias).
+Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-cloudfoundry-alias).
 
 ## Push the app to {{site.data.keyword.cloud_notm}}.
 {: #push-app}
@@ -176,7 +176,7 @@ Go to your {{site.data.keyword.messages-for-rabbitmq}} service dashboard
 
 Select _Connections_ from the dashboard menu. Your application is listed under _Connected Applications_.
 
-If your application is not listed, repeat Steps 7 and 8, making sure that you entered the correct details in [manifest.yml](#step-8-push-the-app-to-sitedatakeywordcloudnotm).
+If your application is not listed, repeat Steps 7 and 8, making sure that you entered the correct details in [manifest.yml](#push-app).
 
 ## Use the app
 {: #use-app}
@@ -224,7 +224,7 @@ The app is now running at `http://localhost:8080`. You can add words and definit
 ## Next steps
 {: #next-steps}
 
-To understand more about how the [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-cloudfoundry-examples/tree/node/rabbitmq){: .external} works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
+To understand more about how the [sample app](https://github.com/IBM-Cloud/clouddatabases-helloworld-examples/tree/node/rabbitmq){: external} works, you can read the application's readme file, or the code comments in `server.js`, which give some information about the app's functions.
 
 To start exploring your {{site.data.keyword.messages-for-rabbitmq}} service, see the following topics about the service dashboard:
 

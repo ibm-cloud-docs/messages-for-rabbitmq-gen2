@@ -1,7 +1,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision rabbitmq
 
@@ -16,7 +16,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-Provision a {{site.data.keyword.messages-for-rabbitmq_full}} deployment through the [catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
+Provision a {{site.data.keyword.messages-for-rabbitmq_full}} deployment through the [catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference), the [{{site.data.keyword.databases-for}} API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api), through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
@@ -109,8 +109,8 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. Gen 2 offers new profile sizes optimized for better performance. For more information, see the table below or [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute).| |
-   | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-service-endpoints) of your deployment. Gen 2 supports **private endpoints only**. |  |
+   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. Gen 2 offers new profile sizes optimized for better performance. For more information, see the table below or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-isolated-compute).| |
+   | `--service-endpoints` [Required]{: tag-red} | Configure the Service endpoints of your deployment. Gen 2 supports **private endpoints only**. |  |
    {: caption="Basic command format fields" caption-side="top"}
 
    In the CLI, `service-endpoints` is a flag, not a parameter.

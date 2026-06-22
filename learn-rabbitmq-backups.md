@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: messages, backups, rabbitmq backups, messages for rabbitmq backups
 
@@ -35,7 +35,7 @@ The expected operation for a {{site.data.keyword.messages-for-rabbitmq}} deploym
 
 For message delivery with durability and consistent quality of service, you must use [quorum queues](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-ha-dr#ha-features). Quorum queues are the default queue type on Gen 2.
 
-The [Shovel plug-in](https://www.rabbitmq.com/shovel.html) can also help move messages across instances and can be useful for migration scenarios.
+The [Shovel plug-in](https://www.rabbitmq.com/docs/shovel){: external} can also help move messages across instances and can be useful for migration scenarios.
 
 ## Independent backups
 {: #independent-backups}

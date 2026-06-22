@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-15"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, databases, rabbitmq connection strings
 
@@ -18,9 +18,13 @@ subcollection: messages-for-rabbitmq-gen2
 
 To connect to {{site.data.keyword.messages-for-rabbitmq_full}}, you need some users and some connection strings. Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ panel.
 
+<!--
+![Endpoints panel](images/getting-started-endpoints-panel.png){: caption="Endpoints panel" caption-side="bottom"}
 
 
-{{site.data.keyword.messages-for-rabbitmq}} Gen 2 deployments do not include a default admin user. You must [create a Manager or Writer user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user) through Service Credentials to connect to your deployment.
+You can also grab connection strings from the [CLI](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference) and the [API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api).
+
+{{site.data.keyword.messages-for-rabbitmq}} Gen 2 deployments do not include a default admin user. You must [create a Manager or Writer user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management#manager-users) through Service Credentials to connect to your deployment.
 {: .tip}
 
 ## Credentials and connection strings for more users
@@ -66,7 +70,7 @@ ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [-
 
 If you don't specify a user, the `deployment-connections` commands return information for the first available user. Gen 2 deployments use private endpoints only, so you must specify `--endpoint-type private`.
 
-To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-icd-cli#icd-cli-install).
+To use the `ibmcloud cdb` CLI commands, you must [install the {{site.data.keyword.databases-for}} plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference).
 {: .tip}
 
 ### From the API

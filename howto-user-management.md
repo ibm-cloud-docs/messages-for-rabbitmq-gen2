@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-15"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, rabbitmq users
 
@@ -16,12 +16,12 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-{{site.data.keyword.messages-for-rabbitmq_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/access-control.html#permissions){: external}.
+{{site.data.keyword.messages-for-rabbitmq_full}} uses RabbitMQ's [built-in access control](https://www.rabbitmq.com/docs/access-control#permissions){: external}.
 {: shortdesc}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 instances **do not** include a default **admin** user, such as Gen 1 instances. Instead, you create users with the `Manager` or `Writer` role using the {{site.data.keyword.cloud_notm}} Service Credential interface — via UI, CLI, or API. You can also create users directly in RabbitMQ through the Management UI.
 
-Since {{site.data.keyword.messages-for-rabbitmq}} comes with the RabbitMQ Management plug-in enabled, user access is also controlled by [user tags](https://www.rabbitmq.com/management.html#permissions){: external}. These tags control what information is available to users through the management UI, `rabbitmqadmin`, and the RabbitMQ HTTP API.
+Since {{site.data.keyword.messages-for-rabbitmq}} comes with the RabbitMQ Management plug-in enabled, user access is also controlled by [user tags](https://www.rabbitmq.com/docs/management#permissions){: external}. These tags control what information is available to users through the management UI, `rabbitmqadmin`, and the RabbitMQ HTTP API.
 
 ## Manager users
 {: #manager-users}
@@ -36,7 +36,7 @@ Users created with the `Manager` role function as admin-like users and have full
 
 Manager users are automatically tagged with the "administrator" and "monitoring" tags in RabbitMQ, providing full access to the management plug-in.
 
-For instructions on creating Manager users, see [Creating users with administrative privileges](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user).
+For instructions on creating Manager users, see [Creating users and getting connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
 
 ## Writer users
 {: #writer-users}

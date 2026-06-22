@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026,
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, databases, jms, shovel, delayed, mqtt, consistent hash exchange, rabbitmq plug-in
 
@@ -36,13 +36,13 @@ RabbitMQ supports various plug-ins to extend its core functions. {{site.data.key
 ## Shovel plug-in
 {: #shovel-plug-in}
 
-{{site.data.keyword.messages-for-rabbitmq}} comes with the [Shovel plug-in](https://www.rabbitmq.com/shovel.html), `rabbitmq_shovel`, and the [Shovel Management plug-in](https://github.com/rabbitmq/rabbitmq-shovel-management), `rabbitmq_shovel_management`, enabled. You can configure the plug-in through both the [RabbitMQ Management plug-in UI](#rabbitmq-management-plug-in) and its accompanying API.
+{{site.data.keyword.messages-for-rabbitmq}} comes with the [Shovel plug-in](https://www.rabbitmq.com/docs/shovel){: external}, `rabbitmq_shovel`, and the [Shovel Management plug-in](https://github.com/rabbitmq/rabbitmq-shovel-management){: external}, `rabbitmq_shovel_management`, enabled. You can configure the plug-in through both the [RabbitMQ Management plug-in UI](#rabbitmq-management-plug-in-info) and its accompanying API.
 
 The _Shovel Status_ and _Shovel Management_ links appear under the _Admin_ tab.
 
 ![Admin tab with the Shovel plug-in](images/plugins-shovel-ui.png){: caption="Admin tab with the Shovel plug-in" caption-side="bottom"}
 
-If you do not see the _Admin_ tab, you might need to log in to the management UI with a [Manager user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user).
+If you do not see the _Admin_ tab, you might need to log in to the management UI with a [Manager user](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-user-management#manager-users).
 {: .tip}
 
 In the RabbitMQ Management API, the Shovel Management plug-in adds endpoints for listing, creating, and deleting shovels. Usage and examples are in the [GitHub repository's documentation](https://github.com/rabbitmq/rabbitmq-shovel-management#usage).
@@ -64,14 +64,14 @@ The RabbitMQ Management plug-in, `rabbitmq_management`, provides access to your 
 
 The RabbitMQ JMS Topic Exchange plug-in, `rabbitmq_jms_topic_exchange`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq}} deployments. This plug-in adds server-side support for the [RabbitMQ JMS client](https://github.com/rabbitmq/rabbitmq-jms-client){: .external} and supports JMS topic routing plus selection based on JMS SQL selection rules.
 
-The RabbitMQ JMS Client is required to communicate with the plug-in. Review the [JMS Client documentation page](https://www.rabbitmq.com/jms-client.html){: .external} that is provided by RabbitMQ for more detailed information on installation and configuration, along with examples.
+The RabbitMQ JMS Client is required to communicate with the plug-in. Review the [JMS Client documentation page](https://www.rabbitmq.com/client-libraries/jms-client){: external} that is provided by RabbitMQ for more detailed information on installation and configuration, along with examples.
 
 More detailed information about the JMS plug-in can also be found in the RabbitMQ JMS Topic Exchange plug-in [GitHub repo](https://github.com/rabbitmq/rabbitmq-jms-topic-exchange){: .external}.
 
 ## MQTT plug-in
 {: #mqtt-plug-in}
 
-The MQTT plug-in, `rabbitmq_mqtt`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq}} deployments. Information on using the MQTT plug-in is available on the [MQTT plug-in](https://www.rabbitmq.com/mqtt.html){: .external} page.
+The MQTT plug-in, `rabbitmq_mqtt`, is enabled by default for {{site.data.keyword.messages-for-rabbitmq}} deployments. Information on using the MQTT plug-in is available on the [MQTT plug-in](https://www.rabbitmq.com/docs/mqtt){: external} page.
 
 ## RabbitMQ Consistent Hash Exchange Type plug-in
 {: #consistent-hash-exchange-type-plug-in}

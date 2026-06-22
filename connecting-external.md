@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026,
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: rabbitmq, rabbitmq connecting, connecting to rabbitmq
 
@@ -16,7 +16,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.messages-for-rabbitmq_full}}. Your deployment has connection strings specifically for drivers, clients, and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.messages-for-rabbitmq_full}}. Your deployment has connection strings specifically for drivers, clients, and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference), and the [{{site.data.keyword.databases-for}} API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api).
 
 The connection strings can be used by any of the credentials you created on your deployment. You can create Manager users (with full administrative privileges) or Writer users (with limited privileges) for your applications to connect with. For more information, see [Creating Users and Getting Connection Strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings).
 
@@ -50,7 +50,7 @@ amqps://$USERNAME:$PASSWORD@f08da56c-f975-4cad-98a5-633b8b5a8e79.974350db55ab4ec
 Here are a few of the common RabbitMQ drivers:
 
 * [AMQP 0-9-1 library and client for Node.JS](https://www.npmjs.com/package/amqplib)
-* [RabbitMQ Java Client Library](http://www.rabbitmq.com/java-client.html)
+* [RabbitMQ Java Client Library](https://www.rabbitmq.com/client-libraries/java-client){: external}
 * [Bunny RabbitMQ Ruby Client](http://rubybunny.info/)
 * [Pika Python protocol](https://pika.readthedocs.io/en/stable/)
 
@@ -81,7 +81,7 @@ The "mqtts" section contains the information that an MQTT client needs to connec
 
 All connections to {{site.data.keyword.messages-for-rabbitmq}} are TLS 1.2 enabled, so the driver or client you use to connect needs to be able to support encryption. Your deployment also comes with a service proprietary certificate so the driver can verify the server upon connection.
 
-For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-faq-cert){: external}.
+For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/cloud-databases?topic=cloud-databases-faq-cert).
 
 ### Using the service proprietary certificate
 {: #using-selfsigned-cert}

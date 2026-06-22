@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-11"
+lastupdated: "2026-06-22"
 
 keywords: deployment, crn, task, gui, api endpoint, dashboard
 
@@ -35,7 +35,7 @@ The ID is a [CRN (Cloud Resource Name)](/docs/account?topic=account-crn) which u
 ### Recent tasks
 {: #recent-tasks}
 
-Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recently completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24 - 48 hours. Unsuccessful tasks can show for 7 - 8 days. Tasks can also be retrieved from the [Cloud Databases API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks) and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.atracker_full}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-at_events).
+Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recently completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24 - 48 hours. Unsuccessful tasks can show for 7 - 8 days. Tasks can also be retrieved from the [Cloud Databases API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api) and [CLI plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference). A historical record of tasks from any time period is available through the [{{site.data.keyword.atracker_full}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-at_events).
 
 ### Endpoints
 {: #endpoints}
@@ -44,7 +44,7 @@ The _Endpoints_ pane within the _Overview_ pane contains connection strings for 
 
 Reference tables for the different connection types are available on the [Getting credentials and connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings) page.
 
-Connection strings use private endpoints only on Gen 2. Public endpoints are not available. For more information, see the [Service endpoints integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-service-endpoints&interface=ui) page.
+Connection strings use private endpoints only on Gen 2. Public endpoints are not available.
 
 You can manage your {{site.data.keyword.messages-for-rabbitmq}} service through the {{site.data.keyword.databases-for}} API. This panel provides the essential information for using the API. For more information about the {{site.data.keyword.databases-for}} API, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api) page.
 
@@ -77,7 +77,7 @@ The _Observability_ tab provides access to the {{site.data.keyword.monitoringful
 
 The _Settings_ tab contains the UI for many of the tunable settings for your deployment. You can
 - view encryption details. Encryption at rest is enabled for all {{site.data.keyword.messages-for-rabbitmq}} deployments. If you brought your own encryption key from [Key Protect](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-key-protect&interface=ui), the panel provides a link to your Key Protect instance and the _Encryption Key_ field has the name of the key.
-- [Create users with administrative privileges](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-admin-user)
+- [Create users and get connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings)
 
 ## Service credentials
 {: #service-credentials}

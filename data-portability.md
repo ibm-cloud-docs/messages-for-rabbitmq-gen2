@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026,
-lastupdated: "2026-06-05"
+lastupdated: "2026-06-22"
 
 keywords: data export, portability
 
@@ -54,4 +54,4 @@ The format of the data exported from the {{site.data.keyword.messages-for-rabbit
 ## Data ownership
 {: #data-ownership}
 
-All exported data are classified as Customer content and therefore apply to them the full customer ownership and licensing rights, as stated in [IBM Cloud Service Agreement](https://www.ibm.com/terms/?id=Z126-6304_WS).
+All exported data are classified as Customer content and therefore apply to them the full customer ownership and licensing rights, as stated in [IBM Cloud Service Agreement](https://www.ibm.com/support/customer/csol/terms/?id=Z126-6304_WS){: external}.

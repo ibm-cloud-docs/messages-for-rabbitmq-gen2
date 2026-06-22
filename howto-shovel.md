@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026,
-lastupdated: "2026-06-15"
+lastupdated: "2026-06-22"
 
 keyowrds: rabbitmq, shovel
 
@@ -30,7 +30,7 @@ Create your Shovel on the destination formation as detailed in the configuration
 
 Follow these steps to configure RabbitMQ Shovel:
 
-1. Log in to the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html){: external} and select the **Admin** tab.
+1. Log in to the [RabbitMQ Management UI](https://www.rabbitmq.com/docs/management){: external} and select the **Admin** tab.
 1. Select *Shovel Management* from the list.
 1. Add a new shovel with the following information, then click *Add shovel*:
    - **Name**: test-shovel
