@@ -19,7 +19,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 {{site.data.keyword.messages-for-rabbitmq_full}} deployments can be manually [scaled to your usage](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-resources-scaling). When you are tuning the performance of your deployment, consider a few factors.
 
-Scaling of disk or compute is not available at MVP for Gen 2, but will be made available soon after launch.
+Scaling of disk or compute is not available at GA for Gen 2, but will be made available soon after launch.
 {: note}
 
 ## Monitoring your deployment
