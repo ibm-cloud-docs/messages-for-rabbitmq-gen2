@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-22"
+lastupdated: "2026-06-24"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -30,8 +30,8 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 : {{site.data.keyword.messages-for-rabbitmq}} Gen 2 includes the following platform changes and features:
 
 **Protocol support**
-: - AMQP and MQTT protocols only are available on Gen 2
-  - Streams and STOMP protocols are not available on Gen 2
+: - AMQP, MQTT, and STOMP protocols are only available on Gen 2
+  - Streams protocol is not available on Gen 2
 
 **Endpoints**
 : - Private endpoints only on Gen 2 VPC
@@ -54,7 +54,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 : - Gen 2 lists only major version series (for example, v4)
   - Minor and patch versions are automatically managed by {{site.data.keyword.cloud}}
   - This enables customers to run workloads on a major version for longer periods
-  - {{site.data.keyword.ibm}} ensures seamless minor and patch version upgrades
+  - {{site.data.keyword.IBM}} ensures seamless minor and patch version upgrades
 
 **Scaling**
 : - Scaling of disk or compute is not available at GA

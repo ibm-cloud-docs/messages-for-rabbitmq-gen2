@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026,
-lastupdated: "2026-06-22"
+  years: 2026
+lastupdated: "2026-06-24"
 
 keywords: rabbitmq, databases, jms, shovel, delayed, mqtt, consistent hash exchange, rabbitmq plug-in
 
@@ -26,6 +26,7 @@ RabbitMQ supports various plug-ins to extend its core functions. {{site.data.key
 | [Shovel plug-in](#shovel-plug-in) | `rabbitmq_shovel`  |
 | [Shovel Management plug-in](#delayed-message-plug-in)| `rabbitmq_shovel_management` |
 | [Delayed Message plug-in](#delayed-message-plug-in) | `rabbitmq_delayed_message_exchange` |
+| [STOMP plug-in](#stomp-plug-in) | `rabbitmq_stomp` |
 | [RabbitMQ Management plug-in](#rabbitmq-management-plug-in) | `rabbitmq_management` |
 | [JMS plug-in](#jms-plug-in) | `rabbitmq_jms_topic_exchange` |
 | [MQTT plug-in](#mqtt-plug-in) | `rabbitmq_mqtt` |
@@ -47,14 +48,19 @@ If you do not see the _Admin_ tab, you might need to log in to the management UI
 
 In the RabbitMQ Management API, the Shovel Management plug-in adds endpoints for listing, creating, and deleting shovels. Usage and examples are in the [GitHub repository's documentation](https://github.com/rabbitmq/rabbitmq-shovel-management#usage).
 
-## Delayed Message plug-in
+## Delayed message plug-in
 {: #delayed-message-plug-in}
 
 The [delayed message plug-in](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange){: .external}, `rabbitmq_delayed_message_exchange` is a third-party plug-in that adds delayed messaging and scheduled messaging to RabbitMQ.
 
 To use the plug-in, declare an exchange with the type `x-delayed-type`. To delay a message, publish it with the `x-delay` header with the number of milliseconds to delay the message. More detailed usage information is in the [plug-in's documentation](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange#usage){: .external}.
 
-## RabbitMQ Management plug-in
+## STOMP plug-in
+{: #stomp-plug-in}
+
+The RabbitMQ [STOMP plug-in](https://www.rabbitmq.com/docs/stomp){: .external}, rabbitmq_stomp, supports sending STOMP-formatted (opens in a new tab) messages through RabbitMQ. The plug-in enables a port to handle STOMP traffic on your deployment and it is TLS/SSL secured. The connection information for STOMP clients is in the **stomp_ssl** section of your deployment's connection strings.
+
+## RabbitMQ management plug-in
 {: #rabbitmq-management-plug-in-info}
 
 The RabbitMQ Management plug-in, `rabbitmq_management`, provides access to your deployment through a web browser, `rabbitmqadmin`, and through the RabbitMQ API. For more information, see [Connecting with the RabbitMQ Management plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-management-plugin).

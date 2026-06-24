@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-22"
+lastupdated: "2026-06-24"
 
 keywords: messages, backups, rabbitmq backups, messages for rabbitmq backups
 
@@ -16,6 +16,9 @@ subcollection: messages-for-rabbitmq-gen2
 {: #backups-for-rabbitmq}
 
 [Gen 2]{: tag-purple}
+
+Backup and Restore for {{site.data.keyword.messages-for-rabbitmq_full}} are currently unavailable.
+{: note}
 
 On {{site.data.keyword.messages-for-rabbitmq_full}} Gen 2, backups include **both configuration data and message data**. This is a significant improvement over Gen 1 (Classic), where only configuration data was backed up.
 

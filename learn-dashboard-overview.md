@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-22"
+lastupdated: "2026-06-24"
 
 keywords: deployment, crn, task, gui, api endpoint, dashboard
 
@@ -40,7 +40,7 @@ Every time that you make administrative changes to your service (such as scaling
 ### Endpoints
 {: #endpoints}
 
-The _Endpoints_ pane within the _Overview_ pane contains connection strings for your deployment. Each tab contains connection information that is tailored to the type of connection or the protocol that uses it. Basic information includes things like _hostname_ and _port_, as well as the TLS service proprietary certificate, TLS/SSL parameters, and the default database of your deployment.
+The _Endpoints_ pane within the _Overview_ pane contains connection strings for your deployment. Each tab contains connection information that is tailored to the type of connection or the protocol that uses it. Basic information includes things like _hostname_ and _port_.
 
 Reference tables for the different connection types are available on the [Getting credentials and connection strings](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-connection-strings) page.
 

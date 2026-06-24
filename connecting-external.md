@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2026,
-lastupdated: "2026-06-22"
+  years: 2026
+lastupdated: "2026-06-24"
 
 keywords: rabbitmq, rabbitmq connecting, connecting to rabbitmq
 
@@ -25,7 +25,7 @@ The connection strings can be used by any of the credentials you created on your
 
 The information a driver needs to make a connection to your deployment is in the `amqps` section of your connection strings. The table contains a breakdown for reference.
 
-| Field Name | Index | Description |
+| Field name | Index | Description |
 | ---------- | ----- | ----------- |
 | `Type` | | Type of connection - for RabbitMQ, it is `uri`. |
 | `Scheme` | | Scheme for a URI - for RabbitMQ, it is `amqps`. |
@@ -35,8 +35,7 @@ The information a driver needs to make a connection to your deployment is in the
 | `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. |
 | `Hosts` | `0...` | A hostname and port to connect to. |
 | `Composed` | `0...` | A URI combining Scheme, Authentication, Host, and Path. |
-| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment. |
-| `Certificate` | `Base64` | A base64 encoded version of the certificate. |
+
 {: caption="RabbitMQ/uri connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
@@ -44,7 +43,7 @@ The information a driver needs to make a connection to your deployment is in the
 Many RabbitMQ drivers are able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example,
 
 ```sh
-amqps://$USERNAME:$PASSWORD@f08da56c-f975-4cad-98a5-633b8b5a8e79.974350db55ab4ec0983f023940bf637f.databases.appdomain.cloud:30402
+amqps://$RABBITMQUSER:$RABBITMQPASS@f08da56c-f975-4cad-98a5-633b8b5a8e79.974350db55ab4ec0983f023940bf637f.databases.appdomain.cloud:30402
 ```
 
 Here are a few of the common RabbitMQ drivers:
@@ -61,7 +60,7 @@ The information that an MQTT client uses to connect can be found in the `mqtts` 
 
 The "mqtts" section contains the information that an MQTT client needs to connect to your deployment.
 
-| Field Name | Index | Description |
+| Field name | Index | Description |
 | ---------- | ----- | ----------- |
 | `Type` | | Type of connection - for `MQTTS`, it is `uri`. |
 | `Scheme` | | Scheme for a URI - in this case it is `mqtts`. |
@@ -70,29 +69,25 @@ The "mqtts" section contains the information that an MQTT client needs to connec
 | `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. |
 | `Hosts` | `0...` | A hostname and port to connect to. |
 | `Composed` | `0...` | A URI combining Authentication, Host, and Port used to connect. |
-| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment |
-| `Certificate` | `Base64` | A base64 encoded version of the certificate. |
 {: caption="RabbitMQ/mqtts connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
-## TLS and service proprietary certificate support
-{: #tls-cert-support}
+  ## Connecting with a `STOMP` client
+{: #connecting-STOMP-client}
 
-All connections to {{site.data.keyword.messages-for-rabbitmq}} are TLS 1.2 enabled, so the driver or client you use to connect needs to be able to support encryption. Your deployment also comes with a service proprietary certificate so the driver can verify the server upon connection.
+The connection details required by a STOMP client are provided in the **stomp_ssl** section of your connection strings.
+The following table describes each parameter for reference.
 
-For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/cloud-databases?topic=cloud-databases-faq-cert).
+| Field name | Index | Description |
+| ---------- | ----- | ----------- |
+| `Type` | | Type of connection - for `STOMP`, it is `stomp`. |
+| `Authentication` | `Username` | The username that you use to connect. |
+| `Authentication` | `Password` | A password for the user - might be shown as `$PASSWORD`. |
+| `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. |
+| `Hosts` | `0...` | A hostname and port to connect to. |
+| `Composed` | `0...` | A URI combining Authentication, Host, and Port that you use to connect. |
+{: caption="RabbitMQ/mqtts connection information" caption-side="top"}
 
-### Using the service proprietary certificate
-{: #using-selfsigned-cert}
-
-1. Copy the certificate information from the *Endpoints* panel or the Base64 field of the connection information.
-2. If needed, decode the Base64 string into text.
-3. Save the certificate to a file. (You can use the Name that is provided or your own file name).
-4. Provide the path to the certificate to the driver or client.
-5. (optional) If your driver or client supports it you can add the certificate its (or your system's) certificate store.
-
-### CLI plug-in support for the service proprietary certificate
-{: #cli-plugin-support-selfsigned-cert}
-
-You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the driver or client.
+* `0...` indicates that there might be one or more of these entries in an array.
+* 
