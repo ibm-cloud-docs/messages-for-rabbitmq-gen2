@@ -61,7 +61,6 @@ toc:
       - topicgroup:
           label: Observability
           topics:
-          - include: ../cloud-databases-gen2/cdb-logging-monitoring.md
           - include: ../cloud-databases-gen2/logging.md
           - include: ../cloud-databases-gen2/reference-monitoring.md
           - include: ../cloud-databases-gen2/at-events.md
@@ -69,9 +68,6 @@ toc:
           label: Enhancing security
           topics:
           - include: ../cloud-databases-gen2/manage-scc.md
-          - include: ../cloud-databases-gen2/howto-allowlists.md
-          - include: ../cloud-databases-gen2/reference-service-endpoints.md
-          - include: ../cloud-databases-gen2/howto-vpes.md
           - include: ../cloud-databases-gen2/reference-iam.md
           - include: ../cloud-databases-gen2/reference-key-protect.md
           - include: ../cloud-databases-gen2/howto-deprovisioning.md
@@ -94,7 +90,6 @@ toc:
           topics:
           - ts-connect.md
           - ts-defs.md
-          - include: ../cloud-databases-gen2/ts-terraform.md
       - topicgroup:
           label: FAQs
           topics:
