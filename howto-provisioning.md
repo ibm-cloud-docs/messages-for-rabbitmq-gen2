@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-22"
+lastupdated: "2026-06-25"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision rabbitmq
 
@@ -110,7 +110,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
-   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. Gen 2 offers new profile sizes optimized for better performance. For more information, see the table below or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-isolated-compute).| |
+   | `members_host_flavor` | To provision an Isolated Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}` and select the desired CPU and RAM configuration. Gen 2 offers new profile sizes optimized for better performance. For more information, see the table below or [Isolated Compute](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-isolated-compute).| |
    | `--service-endpoints` [Required]{: tag-red} | Configure the Service endpoints of your deployment. Gen 2 supports **private endpoints only**. |  |
    {: caption="Basic command format fields" caption-side="top"}
 
@@ -200,7 +200,7 @@ The `members_host_flavor` parameter defines your Isolated Compute sizing. Input 
    ```
    {: pre}
 
-CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
 
 ### The `--parameters` parameter
@@ -230,6 +230,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 1. You need to know the ID of the resource group that you would like to deploy to. This information is available through the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-ibmcloud_commands_resource#ibmcloud_resource_groups).
 
    Use a command like:
+
    ```sh
    ibmcloud resource groups
    ```
@@ -417,7 +418,6 @@ Follow these steps to provision using the [Resource Controller API](https://clou
     }
     ```
         {: pre}
-
 
     3. Once you have all the information, [provision a new resource instance](https://cloud.ibm.com/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with the {{site.data.keyword.cloud_notm}} Resource Controller.
 
