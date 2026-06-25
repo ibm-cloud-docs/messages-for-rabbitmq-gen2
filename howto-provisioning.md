@@ -238,7 +238,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
 
 1. You need to know the region you would like to deploy to.
 
-   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}.
+   To list all of the regions that deployments can be provisioned into from the current region, use the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference){: external}.
 
    The command looks like:
 
@@ -496,7 +496,7 @@ The `members_host_flavor` parameter defines your Compute sizing. Gen 2 uses Isol
 
 **Note**: Shared Compute (`multitenant`) is not available on Gen 2.
 
-CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
 
 ## List of additional parameters
