@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-22"
+lastupdated: "2026-06-25"
 
 keywords: rabbitmq, databases, memory alarms, disk alarms, monitoring, disk I/O, rabbitmq performance
 
@@ -63,7 +63,7 @@ It also needs more disk I/O as it persists all data on disk. If you have impleme
 documentation has a good write-up of their effect on both [resource use](https://www.rabbitmq.com/docs/quorum-queues#resource-use){: external} 
 and [performance](https://www.rabbitmq.com/docs/quorum-queues#performance){: external}.
 Quorum Queues will be the default queue type that will support high-availability with version 4. Mirrored (HA) Classic Queues 
-will be unsupported after v3.13. For more information, see the release notes and [Migrating from Classic Queues to Quorum Queues](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-migrating_classic_quorum).
+will be unsupported after v3.13.
 
 ## RabbitMQ alarm monitoring
 {: #alarm-monitoring}
