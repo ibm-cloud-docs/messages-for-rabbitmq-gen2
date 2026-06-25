@@ -17,7 +17,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-Provision a {{site.data.keyword.messages-for-rabbitmq_full}} deployment through the [catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference), the [{{site.data.keyword.databases-for}} API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api), through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
+Provision an {{site.data.keyword.messages-for-rabbitmq_full}} deployment through the [catalog](https://cloud.ibm.com/databases/messages-for-rabbitmq-gen2/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference), the [{{site.data.keyword.databases-for}} API](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-api), through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-rabbitmq/ibm/latest){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
