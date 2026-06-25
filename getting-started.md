@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-24"
+lastupdated: "2026-06-25"
 
 keywords: rabbitmq, rabbitmq getting started
 
@@ -27,9 +27,9 @@ completion-time: 30m
 {: #gen2-highlights}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 includes important platform changes:
-- **Protocols**: AMQP and MQTT only (Streams and STOMP not available)
+- **Protocols**: AMQP, MQTT, and STOMP (Streams is not available)
 - **Endpoints**: Private endpoints only
-- **Queue types**: Quorum Queues are default; Classic Queues available but not highly available
+- **Queue types**: Quorum Queues are default; Classic Queues are available but not mirrored (HA), and is not recommended to use.
 
 - **Hosting**: Isolated Compute only (Shared Compute not available)
 - **Scaling**: Not available at GA, coming soon after launch
