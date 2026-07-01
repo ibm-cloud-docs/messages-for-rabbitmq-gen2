@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-25"
+lastupdated: "2026-07-01"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision rabbitmq
 
@@ -598,5 +598,5 @@ Flex profiles provide predefined vCPU and RAM configurations across CPU generati
 | 48 CPU x 192 RAM          | `b3c.48x192.encrypted`  |
 {: caption="Flex profile sizing parameters" caption-side="bottom"}
 
-CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-provisioning), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
