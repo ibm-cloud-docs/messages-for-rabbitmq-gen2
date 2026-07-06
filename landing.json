@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "title": "IBM Cloud® Messages for RabbitMQ Gen 2",
+  "introduction": "RabbitMQ Gen 2 is an open source messaging broker on IBM's VPC-based platform with isolated compute, private endpoints, and support for AMQP and MQTT protocols.",
+  "product_page": "https://www.ibm.com/products/messages-for-rabbitmq",
+  "console_page": "/databases/messages-for-rabbitmq/create",
+  "section_topics": {
+    "links": [
+      {
+        "title": "Getting started",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-getting-started"
+      },
+      {
+        "title": "Gen 2 isolated compute",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-isolated-compute"
+      },
+      {
+        "title": "Overview of Gen 1 and Gen 2",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-overview-gen1-gen2"
+      },
+      {
+        "title": "Provisioning",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-provisioning"
+      },
+      {
+        "title": "Comparison of Gen 1 and Gen 2 backups",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-comparison-backups"
+      },
+      {
+        "title": "Gen 2 FAQ",
+        "href": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-faq"
+      },
+      {
+        "title": "Gen 1 docs",
+        "href": "/docs/messages-for-rabbitmq"
+      }
+    ]
+  },
+  "section_highlights": [
+    {
+      "title": "IBM named a leader for cloud database management systems",
+      "description": "Gartner named IBM a leader in Gartner Magic Quadrant for 2021 Cloud Database Management Systems.",
+      "href": "https://www.ibm.com/blog/ibm-is-named-a-leader-in-the-2021-gartner-magic-quadrant-for-cloud-database-management-systems-dbms/",
+      "type": "blog"
+    },
+    {
+      "title": "IBM Training - Cloud",
+      "description": "Includes Power Virtual Server, SAP, VMware, Advocate, Architect, Developer, and Site Reliability Engineer, and more",
+      "href": "https://www.ibm.com/training/cloud",
+      "type": "training"
+    }
+  ],
+  "section_devtools": {
+    "cli": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cdb-reference",
+    "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
+  },
+  "section_updates": {
+    "view_more": "/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-rabbitmq-relnotes",
+    "tiles": [
+      {
+        "date": "June 2026",
+        "title": "Databases for MySQL Gen 2 now available"
+      }
+    ]
+  }
+}
