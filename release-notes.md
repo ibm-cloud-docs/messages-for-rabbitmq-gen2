@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-24"
+lastupdated: "2026-07-07"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -22,8 +22,8 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.messages-for-rabbitmq_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
-## 25 June 2026
-{: #messages-for-rabbitmq-gen2-25jun2026}
+## 6 July 2026
+{: #messages-for-rabbitmq-gen2-06july2026}
 {: release-note}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 is now generally available (GA)
