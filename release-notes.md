@@ -23,7 +23,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: shortdesc}
 
 ## 6 July 2026
-{: #messages-for-rabbitmq-gen2-06july2026}
+{: #messages-for-rabbitmq-gen2-06jul2026}
 {: release-note}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 is now generally available (GA)
