@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-06-24"
+lastupdated: "2026-07-10"
 
 keywords: rabbitmq, databases, jms, shovel, delayed, mqtt, consistent hash exchange, rabbitmq plug-in
 
@@ -24,14 +24,13 @@ RabbitMQ supports various plug-ins to extend its core functions. {{site.data.key
 | Plug-in | Name  |
 | ------- | ------- |
 | [Shovel plug-in](#shovel-plug-in) | `rabbitmq_shovel`  |
-| [Shovel Management plug-in](#delayed-message-plug-in)| `rabbitmq_shovel_management` |
-| [Delayed Message plug-in](#delayed-message-plug-in) | `rabbitmq_delayed_message_exchange` |
+| [Shovel Management plug-in](#showel-plug-in)| `rabbitmq_shovel_management` |
 | [STOMP plug-in](#stomp-plug-in) | `rabbitmq_stomp` |
 | [RabbitMQ Management plug-in](#rabbitmq-management-plug-in) | `rabbitmq_management` |
 | [JMS plug-in](#jms-plug-in) | `rabbitmq_jms_topic_exchange` |
 | [MQTT plug-in](#mqtt-plug-in) | `rabbitmq_mqtt` |
 | [RabbitMQ Consistent Hash Exchange Type plug-in](#consistent-hash-exchange-type-plug-in) | `rabbitmq_consistent_hash_exchange` |
-{: caption="Available RabbitMQ plug-ins" caption-side="top"}
+{: caption="Available RabbitMQ plug-ins" caption-side="bottom"}
 
 
 ## Shovel plug-in
@@ -51,9 +50,8 @@ In the RabbitMQ Management API, the Shovel Management plug-in adds endpoints for
 ## Delayed message plug-in
 {: #delayed-message-plug-in}
 
-The [delayed message plug-in](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange){: .external}, `rabbitmq_delayed_message_exchange` is a third-party plug-in that adds delayed messaging and scheduled messaging to RabbitMQ.
-
-To use the plug-in, declare an exchange with the type `x-delayed-type`. To delay a message, publish it with the `x-delay` header with the number of milliseconds to delay the message. More detailed usage information is in the [plug-in's documentation](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange#usage){: .external}.
+Delayed message plug-in is deprecated starting with v4.2.
+{: deprecated}
 
 ## STOMP plug-in
 {: #stomp-plug-in}
