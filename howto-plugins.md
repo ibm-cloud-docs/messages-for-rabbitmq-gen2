@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2026
-lastupdated: "2026-07-10"
+lastupdated: "2026-07-14"
 
 keywords: rabbitmq, databases, jms, shovel, delayed, mqtt, consistent hash exchange, rabbitmq plug-in
 
@@ -50,7 +50,7 @@ In the RabbitMQ Management API, the Shovel Management plug-in adds endpoints for
 ## Delayed message plug-in
 {: #delayed-message-plug-in}
 
-Delayed message plug-in is deprecated starting with v4.2.
+The delayed message plug-in is deprecated starting with v4.2.
 {: deprecated}
 
 ## STOMP plug-in
