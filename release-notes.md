@@ -27,7 +27,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.databases-for-redis}} Gen 2 is available in multiple regions
-:   {{site.data.keyword.databases-for-redis}} Gen 2 is now available in Montreal (ca-mon), Chennai (in-che), Mumbai (in-mum), Frankfurt (eu-de), Madrid (eu-es) and Sydney (au-syd). For more information, see [Overview of Gen 1 and Gen 2](/docs/databases-for-redis-gen2?topic=databases-for-redis-gen2-overview-gen1-gen2#feature-differentiators).
+:   {{site.data.keyword.databases-for-redis}} Gen 2 is now available in Washington (us-east), Montreal (ca-mon), Chennai (in-che), Mumbai (in-mum), Frankfurt (eu-de), Madrid (eu-es) and Sydney (au-syd). For more information, see [Overview of Gen 1 and Gen 2](/docs/databases-for-redis-gen2?topic=databases-for-redis-gen2-overview-gen1-gen2#feature-differentiators).
 
 
 ## 6 July 2026
