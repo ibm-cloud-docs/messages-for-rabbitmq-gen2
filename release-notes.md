@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-07"
+lastupdated: "2026-09-10"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -21,6 +21,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messages-for-rabbitmq_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 10 Sep 2026
+{: #databases-for-redis-10sep2026}
+{: release-note}
+
+{{site.data.keyword.databases-for-redis}} Gen 2 is available in multiple regions
+:   {{site.data.keyword.databases-for-redis}} Gen 2 is now available in Washington (us-east), Montreal (ca-mon), Chennai (in-che), Mumbai (in-mum), Frankfurt (eu-de), Madrid (eu-es) and Sydney (au-syd). For more information, see [Overview of Gen 1 and Gen 2](/docs/databases-for-redis-gen2?topic=databases-for-redis-gen2-overview-gen1-gen2#feature-differentiators).
+
 
 ## 6 July 2026
 {: #messages-for-rabbitmq-gen2-06jul2026}

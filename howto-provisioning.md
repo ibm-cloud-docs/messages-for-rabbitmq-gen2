@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-01"
+lastupdated: "2026-08-24"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision rabbitmq
 
@@ -52,6 +52,29 @@ Gen 2 offers two types of profiles optimized for different workload requirements
 - **Flex profiles** - Predefined vCPU and RAM configurations across CPU generations, offering cost-optimized performance for development and testing environments.
 
 Use the tables below to choose the appropriate profile for your deployment, and specify the disk size.
+
+### Fixed profiles
+{: #pricing-fixed-profiles-ui}
+
+| Host size | vCPU x RAM |
+| --- | --- |
+| 4x20 | 4 vCPU x 20 GB RAM |
+| 8x40 | 8 vCPU x 40 GB RAM |
+| 16x80 | 16 vCPU x 80 GB RAM |
+| 32x160 | 32 vCPU x 160 GB RAM |
+| 48x240 | 48 vCPU x 240 GB RAM |
+{: caption="Fixed profile selections" caption-side="bottom"}
+
+### Flex profiles
+{: #pricing-flex-profiles-ui}
+
+| Host size | vCPU x RAM |
+| --- | --- |
+| 4x16 | 4 vCPU x 16 GB RAM |
+| 8x32 | 8 vCPU x 32 GB RAM |
+| 16x64 | 16 vCPU x 64 GB RAM |
+| 32x128 | 32 vCPU x 128 GB RAM |
+{: caption="Flex profile selections" caption-side="bottom"}
 
 Specify the disk size depending on your requirements. It can be increased after provisioning but cannot be decreased to prevent data loss.
 {: note}
@@ -123,16 +146,28 @@ Before provisioning, follow the instructions provided in the documentation to in
 
 The `members_host_flavor` parameter defines your Isolated Compute sizing. Input the appropriate value for your desired CPU and RAM configuration.
 
-| **Members host flavor** | **members_host_flavor value** |
-|:-------------------------:|:---------------------:|
-| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
-| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
-| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
-| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Members host flavor sizing parameter" caption-side="bottom"}
-{: #host_flavor_table}
+#### Fixed host flavors
+{: #fixed-host-flavors-cli}
+
+| Member Host flavor | vCPU x RAM  | host_flavor value          |
+|-----------|----------------------|------------------------ ---|
+| 4x20      | 4 vCPU x 20 GB RAM   | bx3d.4x20.encrypted        |
+| 8x40      | 8 vCPU x 40 GB RAM   | bx3d.8x40.encrypted        |
+| 16x80     | 16 vCPU x 80 GB RAM  | bx3d.16x80.encrypted       |
+| 32x160    | 32 vCPU x 160 GB RAM | bx3d.32x160.encrypted      |
+| 48x240    | 48 vCPU x 240 GB RAM | bx3d.48x240.encrypted      |
+{: caption="Fixed host flavor sizing parameter" caption-side="bottom"}
+
+#### Flex host flavors
+{: #flex-host-flavors-cli}
+
+| Member Host flavor | vCPU x RAM  | host_flavor value         |
+|-----------|----------------------|---------------------------|
+| 4x16      | 4 vCPU x 16 GB RAM   | bxf.4x16.encrypted        |
+| 8x32      | 8 vCPU x 32 GB RAM   | bxf.8x32.encrypted        |
+| 16x64     | 16 vCPU x 64 GB RAM  | bxf.16x64.encrypted       |
+| 32x128    | 32 vCPU x 128 GB RAM | bxf.32x128.encrypted      |
+{: caption="Flex host flavor sizing parameter" caption-side="bottom"} (edited) 
 
  You will see a response like:
 
@@ -484,17 +519,31 @@ The fields in the command are described in the table that follows.
 
 The `members_host_flavor` parameter defines your Compute sizing. Gen 2 uses Isolated Compute exclusively with new profile sizes optimized for better performance. Input the appropriate value for your desired CPU and RAM configuration.
 
-| **Members host flavor** | **members_host_flavor value** |
-|:-------------------------:|:---------------------:|
-| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
-| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
-| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
-| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Members host flavor sizing parameter (Gen 2 new profile sizes)" caption-side="bottom"}
+#### Fixed host flavors
+{: #fixed-host-flavors-api}
 
-**Note**: Shared Compute (`multitenant`) is not available on Gen 2.
+| Member Host flavor | vCPU x RAM  | host_flavor value          |
+|-----------|----------------------|------------------------ ---|
+| 4x20      | 4 vCPU x 20 GB RAM   | bx3d.4x20.encrypted        |
+| 8x40      | 8 vCPU x 40 GB RAM   | bx3d.8x40.encrypted        |
+| 16x80     | 16 vCPU x 80 GB RAM  | bx3d.16x80.encrypted       |
+| 32x160    | 32 vCPU x 160 GB RAM | bx3d.32x160.encrypted      |
+| 48x240    | 48 vCPU x 240 GB RAM | bx3d.48x240.encrypted      |
+{: caption="Fixed host flavor sizing parameter" caption-side="bottom"}
+
+#### Flex host flavors
+{: #flex-host-flavors-api}
+
+| Member Host flavor | vCPU x RAM  | host_flavor value         |
+|-----------|----------------------|---------------------------|
+| 4x16      | 4 vCPU x 16 GB RAM   | bxf.4x16.encrypted        |
+| 8x32      | 8 vCPU x 32 GB RAM   | bxf.8x32.encrypted        |
+| 16x64     | 16 vCPU x 64 GB RAM  | bxf.16x64.encrypted       |
+| 32x128    | 32 vCPU x 128 GB RAM | bxf.32x128.encrypted      |
+{: caption="Flex host flavor sizing parameter" caption-side="bottom"} (edited) 
+
+Shared Compute (`multitenant`) is not available on Gen 2.
+{: important}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
@@ -570,33 +619,28 @@ output "ICD RabbitMQ database connection string" {
 
 The `host_flavor` parameter defines your compute sizing. Choose from Fixed profiles for consistent performance or Flex profiles for cost optimization.
 
-#### Fixed profiles
-{: #fixed-profiles-terraform}
+#### Fixed host flavors
+{: #fixed-host-flavors-terraform}
 
-Fixed profiles provide predefined vCPU and RAM configurations on the newest CPU generation for consistent, predictable performance.
+| Member Host flavor | vCPU x RAM  | host_flavor value          |
+|-----------|----------------------|------------------------ ---|
+| 4x20      | 4 vCPU x 20 GB RAM   | bx3d.4x20.encrypted        |
+| 8x40      | 8 vCPU x 40 GB RAM   | bx3d.8x40.encrypted        |
+| 16x80     | 16 vCPU x 80 GB RAM  | bx3d.16x80.encrypted       |
+| 32x160    | 32 vCPU x 160 GB RAM | bx3d.32x160.encrypted      |
+| 48x240    | 48 vCPU x 240 GB RAM | bx3d.48x240.encrypted      |
+{: caption="Fixed host flavor sizing parameter" caption-side="bottom"}
 
-| **Host flavor** | **host_flavor value** |
-|:-------------------------:|:---------------------:|
-| 4 CPU x 20 RAM            | `bx3d.4x20.encrypted`    |
-| 8 CPU x 40 RAM            | `bx3d.8x40.encrypted`    |
-| 32 CPU x 160 RAM          | `bx3d.32x160.encrypted`  |
-| 48 CPU x 240 RAM          | `bx3d.48x240.encrypted`  |
-{: caption="Fixed profile sizing parameters" caption-side="bottom"}
+#### Flex host flavors
+{: #flex-host-flavors-terraform}
 
-#### Flex profiles
-{: #flex-profiles-terraform}
-
-Flex profiles provide predefined vCPU and RAM configurations across CPU generations for cost-optimized performance. The `host_flavor` parameter defines your Compute sizing.
-
-| **Host flavor** | **host_flavor value** |
-|:-------------------------:|:---------------------:|
-
-| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
-| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
-| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-| 48 CPU x 192 RAM          | `b3c.48x192.encrypted`  |
-{: caption="Flex profile sizing parameters" caption-side="bottom"}
+| Member Host flavor | vCPU x RAM  | host_flavor value         |
+|-----------|----------------------|---------------------------|
+| 4x16      | 4 vCPU x 16 GB RAM   | bxf.4x16.encrypted        |
+| 8x32      | 8 vCPU x 32 GB RAM   | bxf.8x32.encrypted        |
+| 16x64     | 16 vCPU x 64 GB RAM  | bxf.16x64.encrypted       |
+| 32x128    | 32 vCPU x 128 GB RAM | bxf.32x128.encrypted      |
+{: caption="Flex host flavor sizing parameter" caption-side="bottom"} (edited) 
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-provisioning), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
