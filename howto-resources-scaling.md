@@ -240,7 +240,7 @@ Review resource allocations to your database by checking your terraform scripts 
 
 
 ## Scaling in the UI
-{: #review-resources-ui}
+{: #resources-scaling-ui}
 {: ui}
 
 1. On the **Resources** tab, click **Configure** in the **Resource allocations** tile.
