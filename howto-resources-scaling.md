@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-06-22"
+lastupdated: "2026-09-22"
 
 keywords: rabbitmq, databases, manual scaling, disk I/O, memory, CPU, rabbitmq scaling
 
@@ -17,7 +17,7 @@ subcollection: messages-for-rabbitmq-gen2
 
 [Gen 2]{: tag-purple}
 
-**Important**: Scaling of disk or compute (CPU and RAM) is **not available at GA** for {{site.data.keyword.messages-for-rabbitmq}} Gen 2. Scaling capabilities will be made available soon after the initial launch.
+Scaling of disk or compute (CPU and RAM) is **not available at GA** for {{site.data.keyword.messages-for-rabbitmq}} Gen 2. Scaling capabilities will be made available soon after the initial launch.
 {: important}
 
 {{site.data.keyword.messages-for-rabbitmq}} Gen 2 uses the [Isolated Compute](/docs/cloud-databases-gen2?topic=cloud-databases-gen2-isolated-compute) hosting model exclusively. When scaling becomes available, you will be able to adjust resources by selecting different profile sizes.
