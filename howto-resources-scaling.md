@@ -229,9 +229,34 @@ Flex profiles provide predefined vCPU and RAM configurations across CPU generati
 
 The `host_flavor` parameter defines your compute sizing. 
 
-
 ## Review current resources and hosting model
 {: #review-resources-terraform}
 {: terraform}
 
 Review resource allocations to your database by checking your terraform scripts for `cpu { allocation_count = }`, `memory {allocation_mb = }`, and `disk { allocation_mb = }`. 
+
+
+
+
+
+## Scaling in the UI
+{: #review-resources-ui}
+{: ui}
+
+1. On the **Resources** tab, click **Configure** in the **Resource allocations** tile.
+
+    A configuration panel opens.
+
+2. If your deployment uses the Isolated Compute hosting model, select the required vCPU and RAM configuration per member from the **Host sizes** table.
+
+3. Adjust the **Disk (GB/member)** value by using the slider or entering a value.
+
+    Disk capacity is allocated per member. Disk size also determines IOPS at a ratio of 1 GB to 10 IOPS.
+
+4. Configure the number of members for the deployment.
+
+    For RabbitMQ deployments, the number of members is fixed at 3.
+
+5. Review the estimated cost.
+
+6. Click **Apply changes**.
