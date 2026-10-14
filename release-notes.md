@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-08"
+lastupdated: "2026-10-14"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -21,6 +21,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.messages-for-rabbitmq_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 12 October 2026
+{: #messages-for-rabbitmq-gen2-12oct2026}
+{: release-note}
+
+Context-based restrictions (CBR) support now available
+:  You can now use context-based restrictions (CBR) to restrict access to {{site.data.keyword.messages-for-rabbitmq}} resources based on network context, such as IP addresses, VPCs, and {{site.data.keyword.cloud}} services. For more information, see [Managing access with context-based restrictions](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-cbr&interface=ui).
 
 ## 7 October 2026
 {: #messages-for-rabbitmq-gen2-07oct2026}
