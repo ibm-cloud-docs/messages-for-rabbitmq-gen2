@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-30"
+lastupdated: "2026-11-02"
 
 keywords: messages-for-rabbitmq-gen2 release notes
 
@@ -22,7 +22,12 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.messages-for-rabbitmq_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 2 November 2026
+{: #messages-for-rabbitmq-gen2-02nov2026}
+{: release-note}
 
+{{site.data.keyword.messages-for-rabbitmq}} Gen 1 to Gen 2 migration is now generally available
+:  Migration from Gen 1 (Classic) to Gen 2 (VPC) is now available for {{site.data.keyword.messages-for-rabbitmq}}. You can migrate by using the Migration Hub in the {{site.data.keyword.cloud}} console, Terraform, the API, or the CLI. Backup and restore is the supported migration path. For workloads that require migration of in-flight messages, a Shovel-based migration approach is also available to transfer messages between Gen 1 and Gen 2 deployments. For more information, see [Migrating {{site.data.keyword.messages-for-rabbitmq}} from Gen 1 to Gen 2](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-migrating-rabbitmq-gen1-to-gen2) and [Migrating {{site.data.keyword.messages-for-rabbitmq}} from Gen 1 to Gen 2 by using the Shovel plugin](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-migrating-rabbitmq-gen1-to-gen2-shovel).
 
 ## 12 October 2026
 {: #messages-for-rabbitmq-gen2-12oct2026}
