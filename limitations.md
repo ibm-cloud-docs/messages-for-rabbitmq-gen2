@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-02"
+lastupdated: "2026-11-05"
 
 keywords: rabbitmq gen 2 differences, rabbitmq gen 2 limitations, cloud databases gen 2 rabbitmq, gen 1 vs gen 2
 
@@ -19,7 +19,7 @@ content-type: reference
 
 [Gen 2]{: tag-purple}
 
-Building upon the [Overview of Gen 1 (Classic) and Gen 2 (VPC)](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-overview-gen1-gen2), this reference details the functional comparison between {{site.data.keyword.messages-for-rabbitmq} Generation 1 (Classic) and Generation 2 (VPC).
+Building upon the [Overview of Gen 1 (Classic) and Gen 2 (VPC)](/docs/messages-for-rabbitmq-gen2?topic=messages-for-rabbitmq-gen2-overview-gen1-gen2), this reference details the functional comparison between {{site.data.keyword.messages-for-rabbitmq}} Generation 1 (Classic) and Generation 2 (VPC).
 {: shortdesc}
 
 To help you design, provision, and migrate workloads effectively, this guide is organized into two distinct sections:
@@ -41,7 +41,7 @@ Architectural differences represent permanent design changes in Gen 2. Gen 2 is 
 | **Backup architecture** | Backups operate at file and application level; backup duration and I/O impact scale with data size. | Backups based on VPC storage block-level snapshots. | The new architecture decouples backup operations from database compute; volume snapshots complete near-instantly with zero operational overhead on active transactions. |
 | **TLS and SSL certificates** | Certificates signed by the internal IBM Cloud Database Certificate Authority. | Certificates signed by a public Certificate Authority (Let's Encrypt). | Standardizes on industry-standard CA signatures, simplifying automated certificate rotation and client trust store management. |
 | **Administrative access** | Single `admin` user provisioned by IBM. | Dynamic Manager role by using service credentials. | Removes fixed administrative credentials with IAM-governed, service credentials. |
-| **Supported major versions and version treatment** | v3.13, v4.1, and v4.2. In Gen 1, a major version is defined by the first two numbers of the version (for example, `4.2`). | v4. In Gen 2, a major version is defined by the first number only. | Gen 2 launches on RabbitMQ major version 4. Support for additional (newer) major versions is planned. |
+| **Supported major versions and version treatment** | v4.2 and v4.3. In Gen 1, a major version is defined by the first two numbers of the version (for example, `4.2`). | v4. In Gen 2, a major version is defined by the first number only. | Gen 2 launches on RabbitMQ major version 4. Support for additional (newer) major versions is planned. |
 | **Queue types** | Not restricted to a single queue type. | Quorum queues only. | Gen 2 supports quorum queues only. |
 {: caption="Architectural differences between {{site.data.keyword.messages-for-rabbitmq}} Gen 1 and Gen 2" caption-side="bottom"}
 
@@ -52,13 +52,13 @@ The following list represents capabilities available in Gen 1 that are not yet a
 
 | Capability | Gen 2 status | Notes and workarounds |
 | --- | --- | --- |
-| **Shuffle plug-in**  \n RabbitMQ Shuffle plug-in support. | Future release | The Shuffle plug-in is not currently available on Gen 2 deployments.  \n **Workaround:** Implement alternative message distribution patterns by using supported RabbitMQ exchanges, routing strategies, or application-level message distribution logic. |
-| **{{site.data.keyword.databases-for} CLI plug-in (`ibmcloud cdb`)**  \n CLI plug-in for managing {{site.data.keyword.databases-for} instances. | Future release | The `cdb` CLI plug-in operates on Gen 1 instances only. Dedicated Gen 2 CLI plug-in commands are planned in a future release.  \n **Workaround:** Manage instances by using `ibmcloud resource` CLI commands, the Gen 2 REST APIs, or the {{site.data.keyword.cloud_notm}} Terraform provider. |
+| **{{site.data.keyword.databases-for}} CLI plug-in (`ibmcloud cdb`)**  \n CLI plug-in for managing {{site.data.keyword.databases-for}} instances. | Future release | The `cdb` CLI plug-in operates on Gen 1 instances only. Dedicated Gen 2 CLI plug-in commands are planned in a future release.  \n **Workaround:** Manage instances by using `ibmcloud resource` CLI commands, the Gen 2 REST APIs, or the {{site.data.keyword.cloud_notm}} Terraform provider. |
 | **Disk autoscaling**  \n Threshold-based automatic disk expansion. | Future release | Gen 1 supports disk autoscaling. CPU and RAM autoscaling are not supported on Gen 1 Isolated Compute deployments. Gen 2 does not currently provide automatic scaling.  \n **Workaround:** Manually scale deployment profiles and disk allocations by using the {{site.data.keyword.cloud_notm}} console, CLI, API, or Terraform. |
 | **Cross-regional backup (disaster recovery)**  \n Automated replication of backup snapshots to a secondary (singular) region for disaster recovery. | Future release | Gen 1 backup storage is distributed across multiple regions by default. Automated cross-region replication of backup snapshots is planned for Gen 2 in a future release. |
 | **Small scale instances**  \n Support for lowest price vCPU hosting models. | Future release | Cost-optimized deployment (nano) profiles that provide a lower-cost alternative for smaller workloads while maintaining the benefits of the Gen 2 architecture. Nano profiles replace the Gen 1 shared hosting model with dedicated Gen 2 deployments that offer greater flexibility and isolation.  |
 | **{{site.data.keyword.keymanagementservicelong}}: Key Ring scope**  \n Scoping IAM Service-to-Service authorization policies to a Key Ring. | Future release | IAM Service-to-Service (S2S) policies restricted to a Key Ring return `422 Unprocessable Entity`.  \n **Workaround:** Scope the S2S authorization policy to the {{site.data.keyword.keymanagementserviceshort}} instance or a single Key CRN. |
 | **{{site.data.keyword.keymanagementserviceshort}}: Resource group scope**  \n Scoping IAM Service-to-Service authorization policies to a resource group. | Future release | The Gen 2 provisioning broker does not evaluate broad resource group-scoped S2S policies.  \n **Workaround:** Scope the S2S policy directly to the specific {{site.data.keyword.keymanagementserviceshort}} instance. |
+| **Shuffle plug-in**  \n RabbitMQ Shuffle plug-in support. | Future release | The Shuffle plug-in is not currently available on Gen 2 deployments.  \n **Workaround:** Implement alternative message distribution patterns by using supported RabbitMQ exchanges, routing strategies, or application-level message distribution logic. |
 {: caption="Feature parity for {{site.data.keyword.messages-for-rabbitmq}} Gen 2" caption-side="bottom"}
 
 ## Detailed domain breakdown
@@ -96,4 +96,3 @@ The following list represents capabilities available in Gen 1 that are not yet a
 - **Plug-ins:** The RabbitMQ Shuffle plug-in is not currently available on Gen 2.
 - **Queues:** Gen 2 supports quorum queues only.
 - **Client tooling:** Because Gen 2 operates exclusively over private endpoints, applications and administrators connect by using standard AMQP client libraries and RabbitMQ tooling that run inside an authorized VPC network.
-
