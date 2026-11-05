@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-02"
+lastupdated: "2026-11-05"
 
 keywords: rabbitmq migration, gen1 to gen2, classic infrastructure, vpc, rabbitmq shovel, shovel plugin, message migration, queue migration, private endpoints, live migration
 
@@ -67,7 +67,7 @@ The Shovel plugin migrates messages between specific queues. It does not automat
 Before configuring the Shovel plugin, ensure that you have:
 
 * A Gen 1 {{site.data.keyword.messages-for-rabbitmq}} deployment running with existing queues and messages.
-* A provisioned Gen 2 {{site.data.keyword.messages-for-rabbitmq}} deployment in your target VPC and region.
+* A provisioned Gen 2 {{site.data.keyword.messages-for-rabbitmq}} deployment in your target VPC and region. Migration to Gen 2 is available in the us-east (Washington, DC), br-sao (São Paulo), and us-south (Dallas) regions, with additional regions to follow. Ensure that the region you specify is a supported Gen 2 region, such as `us-east`.
 * Destination queues created on the Gen 2 deployment matching the source queue names and configurations.
 * Service credentials (username, password, host, and port) for both Gen 1 and Gen 2 deployments.
 * Network access to the RabbitMQ Management API on the Gen 2 deployment over port `15671`.
