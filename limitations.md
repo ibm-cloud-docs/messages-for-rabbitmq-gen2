@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-05"
+lastupdated: "2026-11-06"
 
 keywords: rabbitmq gen 2 differences, rabbitmq gen 2 limitations, cloud databases gen 2 rabbitmq, gen 1 vs gen 2
 
@@ -54,11 +54,11 @@ The following list represents capabilities available in Gen 1 that are not yet a
 | --- | --- | --- |
 | **{{site.data.keyword.databases-for}} CLI plug-in (`ibmcloud cdb`)**  \n CLI plug-in for managing {{site.data.keyword.databases-for}} instances. | Future release | The `cdb` CLI plug-in operates on Gen 1 instances only. Dedicated Gen 2 CLI plug-in commands are planned in a future release.  \n **Workaround:** Manage instances by using `ibmcloud resource` CLI commands, the Gen 2 REST APIs, or the {{site.data.keyword.cloud_notm}} Terraform provider. |
 | **Disk autoscaling**  \n Threshold-based automatic disk expansion. | Future release | Gen 1 supports disk autoscaling. CPU and RAM autoscaling are not supported on Gen 1 Isolated Compute deployments. Gen 2 does not currently provide automatic scaling.  \n **Workaround:** Manually scale deployment profiles and disk allocations by using the {{site.data.keyword.cloud_notm}} console, CLI, API, or Terraform. |
-| **Cross-regional backup (disaster recovery)**  \n Automated replication of backup snapshots to a secondary (singular) region for disaster recovery. | Future release | Gen 1 backup storage is distributed across multiple regions by default. Automated cross-region replication of backup snapshots is planned for Gen 2 in a future release. |
+| **Backup and restore**  \n Backups and restores of instance data, including cross-region backup for disaster recovery. | Future release | Backup and restore, including cross-region replication of backups, is not currently available on Gen 2 and is planned in a future release. |
 | **Small scale instances**  \n Support for lowest price vCPU hosting models. | Future release | Cost-optimized deployment (nano) profiles that provide a lower-cost alternative for smaller workloads while maintaining the benefits of the Gen 2 architecture. Nano profiles replace the Gen 1 shared hosting model with dedicated Gen 2 deployments that offer greater flexibility and isolation.  |
 | **{{site.data.keyword.keymanagementservicelong}}: Key Ring scope**  \n Scoping IAM Service-to-Service authorization policies to a Key Ring. | Future release | IAM Service-to-Service (S2S) policies restricted to a Key Ring return `422 Unprocessable Entity`.  \n **Workaround:** Scope the S2S authorization policy to the {{site.data.keyword.keymanagementserviceshort}} instance or a single Key CRN. |
 | **{{site.data.keyword.keymanagementserviceshort}}: Resource group scope**  \n Scoping IAM Service-to-Service authorization policies to a resource group. | Future release | The Gen 2 provisioning broker does not evaluate broad resource group-scoped S2S policies.  \n **Workaround:** Scope the S2S policy directly to the specific {{site.data.keyword.keymanagementserviceshort}} instance. |
-| **Shuffle plug-in**  \n RabbitMQ Shuffle plug-in support. | Future release | The Shuffle plug-in is not currently available on Gen 2 deployments.  \n **Workaround:** Implement alternative message distribution patterns by using supported RabbitMQ exchanges, routing strategies, or application-level message distribution logic. |
+| **Shovel plug-in**  \n RabbitMQ Shovel plug-in support. | Future release | The Shovel plug-in is not currently available on Gen 2 deployments.  \n **Workaround:** Implement alternative message distribution patterns by using supported RabbitMQ exchanges, routing strategies, or application-level message distribution logic. |
 {: caption="Feature parity for {{site.data.keyword.messages-for-rabbitmq}} Gen 2" caption-side="bottom"}
 
 ## Detailed domain breakdown
@@ -82,7 +82,7 @@ The following list represents capabilities available in Gen 1 that are not yet a
 {: #backup-restore-differences}
 
 - **Volume snapshots:** Gen 2 uses underlying VPC block storage snapshots instead of file-level and application-level backups. This eliminates the compute and I/O performance impact during backup operations and ensures consistent backup timing regardless of data size.
-- **Cross-region replication of backups:** Automated cross-region replication of backup snapshots is available in Gen 1 and is planned for Gen 2 in a future release.
+- **Backup and restore availability:** Backup and restore, including cross-region replication of backups, is available in Gen 1 and is planned for Gen 2 in a future release.
 
 ### High availability
 {: #ha-replication-differences}
