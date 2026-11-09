@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-05"
+lastupdated: "2026-11-06"
 
 keywords: rabbitmq migration, gen1 to gen2, classic infrastructure, vpc, rabbitmq shovel, shovel plugin, message migration, queue migration, private endpoints, live migration
 
@@ -73,7 +73,7 @@ Before configuring the Shovel plugin, ensure that you have:
 * Network access to the RabbitMQ Management API on the Gen 2 deployment over port `15671`.
 * `curl` and `jq` CLI utilities installed in your environment.
 
-## Step 1: Retrieve connection details
+## Retrieve connection details
 {: #step-retrieve-credentials}
 {: step}
 
@@ -83,13 +83,13 @@ Obtain the connection strings and credentials for both your Gen 1 and Gen 2 depl
 2. Select **Service credentials** and note the private AMQPS connection URI, username, password, hostname, and port.
 3. Repeat the step for your Gen 2 {{site.data.keyword.messages-for-rabbitmq}} deployment. Note the private Management API hostname and port (`15671`) as well as the private AMQPS URI.
 
-## Step 2: Configure target topology on Gen 2
+## Configure target topology on Gen 2
 {: #step-configure-topology}
 {: step}
 
 Ensure that all required exchanges, queues, and bindings exist on your Gen 2 deployment before starting the shovel. You can create them using the RabbitMQ Management UI, Management API, or your deployment automation scripts.
 
-## Step 3: Create the dynamic Shovel on Gen 2
+## Create the dynamic Shovel on Gen 2
 {: #step-create-shovel}
 {: step}
 
@@ -134,7 +134,7 @@ Key Shovel configuration parameters:
 * `ack-mode`: Set to `"on-publish"` so messages are acknowledged on the Gen 1 source only after they are confirmed published to the Gen 2 destination.
 * `delete-after`: Set to `"never"` to keep the shovel running continuously during the migration window, or `"queue-length"` if you want the shovel to terminate automatically once the source queue is empty.
 
-## Step 4: Verify the Shovel status
+## Verify the Shovel status
 {: #step-verify-shovel}
 {: step}
 
@@ -180,7 +180,7 @@ A successfully running shovel outputs a status similar to the following example:
 
 The `state: "running"` field confirms that the shovel has successfully connected to both the Gen 1 source and Gen 2 destination queues.
 
-## Step 5: Verify message transfer
+## Verify message transfer
 {: #step-verify-message-transfer}
 {: step}
 
@@ -190,7 +190,7 @@ Validate that messages are transferring correctly from Gen 1 to Gen 2:
 2. Check `<DESTINATION_QUEUE>` on the Gen 2 deployment to confirm the message was received.
 3. Query the Shovel status again and verify that the `forwarded` count increments accordingly.
 
-## Step 6: Cut over applications
+## Cut over applications
 {: #step-cutover-apps}
 {: step}
 
@@ -200,7 +200,7 @@ Once the Shovel is operational, perform the application cutover:
 2. **Drain remaining Gen 1 messages**: Allow the active Shovel to forward any remaining messages from Gen 1 queues into Gen 2. Monitor the Gen 1 queue depth until all source queues reach zero messages.
 3. **Update consumer applications**: Update your consumer applications with the Gen 2 private connection endpoints and credentials. Restart consumers to process messages directly from Gen 2.
 
-## Step 7: Delete the Shovel and clean up
+## Delete the Shovel and clean up
 {: #step-cleanup-shovel}
 {: step}
 
