@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-11-06"
+lastupdated: "2026-11-09"
 
 keywords: rabbitmq gen 2 differences, rabbitmq gen 2 limitations, cloud databases gen 2 rabbitmq, gen 1 vs gen 2
 
@@ -93,6 +93,6 @@ The following list represents capabilities available in Gen 1 that are not yet a
 {: #operations-tooling-differences}
 
 - **Control plane and CLI tooling:** Gen 2 architecture is deeply integrated into the {{site.data.keyword.cloud_notm}} Resource Controller. The legacy `cdb` CLI plug-in operates exclusively against Gen 1 instances. Native Gen 2 plug-in commands are planned in a future release; currently, instance lifecycle management is performed by using standard `ibmcloud resource` CLI commands, the Resource Controller API, or Terraform.
-- **Plug-ins:** The RabbitMQ Shuffle plug-in is not currently available on Gen 2.
+- **Plug-ins:** The RabbitMQ Shovel plug-in is not currently available on Gen 2.
 - **Queues:** Gen 2 supports quorum queues only.
 - **Client tooling:** Because Gen 2 operates exclusively over private endpoints, applications and administrators connect by using standard AMQP client libraries and RabbitMQ tooling that run inside an authorized VPC network.
